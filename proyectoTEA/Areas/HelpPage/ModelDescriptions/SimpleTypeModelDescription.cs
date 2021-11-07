@@ -1,0 +1,6 @@
+namespace proyectoTEA.Areas.HelpPage.ModelDescriptions
+{
+    public class SimpleTypeModelDescription : ModelDescription
+    {
+    }
+}
