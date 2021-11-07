@@ -8,7 +8,7 @@ public class Mapping : DbContext
 
 	}
 	public DbSet<UUsers> user { get; set; }
-	//Registro/1 docente
-	//Registro/2 acud
-	//Registro/3 niño
+	public DbSet<URol> rol { get; set; }
+	public DbSet<UAcceso> acceso { get; set; }
+
 }

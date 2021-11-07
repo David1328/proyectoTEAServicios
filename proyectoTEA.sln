@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1300
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "proyectoTEA", "proyectoTEA\proyectoTEA.csproj", "{D2480BA5-8F03-4A16-B80D-01B0B9DF5C10}"
 EndProject
@@ -10,6 +10,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{16CD22A8-5674-452E-821E-A66FB3414D67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicaDeNegocio", "LogicaDeNegocio\LogicaDeNegocio.csproj", "{45880601-53A2-4236-A6FA-5BAF26B6C0B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backup", "backup", "{5E44DC1F-CF6D-45A0-AB26-0197236BB990}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\..\Downloads\TEAPI0711.sql = ..\..\..\..\..\..\Downloads\TEAPI0711.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
