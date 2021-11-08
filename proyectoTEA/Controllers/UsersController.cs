@@ -17,6 +17,7 @@ namespace proyectoTEA.Controllers
 	public class UsersController : ApiController
     {
 		[Route("PostAgregarAcudiente")]
+		[HttpPost]
 		public IHttpActionResult PostAgregarAcudiente(UAcudiente nuevoAcudiente)
 		{
 			string message;
@@ -41,6 +42,7 @@ namespace proyectoTEA.Controllers
 		}
 
 		[Route("PostAgregarDocente")]
+		[HttpPost]
 		public IHttpActionResult PostAgregarDocente(UDocente nuevoDocente)
 		{
 			string message;
@@ -63,7 +65,9 @@ namespace proyectoTEA.Controllers
 				return BadRequest();
 			}
 		}
+
 		[Route("PostAgregarPaciente")]
+		[HttpPost]
 		public IHttpActionResult PostAgregarPaciente(UPaciente nuevoPaciente)
 		{
 			string message;
@@ -76,7 +80,7 @@ namespace proyectoTEA.Controllers
 						return Conflict();
 					case "Registrado con exito":
 						return Ok(message);
-					case "Hace falta la cedula":
+					case "Hace falta la cedula o cedula no existente":
 						return BadRequest(message);
 					default:
 						return BadRequest();

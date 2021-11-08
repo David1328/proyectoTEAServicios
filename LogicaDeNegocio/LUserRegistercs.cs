@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Datos;
+using System;
 using Utilitarios;
 
 namespace LogicaDeNegocio
@@ -71,17 +72,19 @@ namespace LogicaDeNegocio
 				nuevoUsuario.Numero_documento = nuevoPaciente.Numero_documento;
 				nuevoUsuario.Clave_usuario = nuevoPaciente.Clave;
 				nuevoUsuario.Rol_usuario_id = 3;
+				UsersRegister buscar = new UsersRegister();
 				//Validaciones para la creacion de los objetos
 				if ((new Datos.UsersRegister().verificarExistenciaDocumentoPaciente(nuevoUsuario)) == null)
 				{
-					if (nuevoPaciente.Cedula_acudiente != null || nuevoPaciente.Cedula_docente != null)
+					if ((nuevoPaciente.Cedula_acudiente != null && (buscar.AcudienteODocenteExistente(nuevoPaciente.Cedula_acudiente,2)) != null) 
+						||nuevoPaciente.Cedula_docente != null && (buscar.AcudienteODocenteExistente(nuevoPaciente.Cedula_docente, 1)) != null)
 					{
 						new Datos.UsersRegister().agregarUsuario(nuevoUsuario);
 						new Datos.UsersRegister().agregarPaciente(nuevoPaciente);
 						return wraper.Mensaje = "Registrado con exito";
 					}else
 					{
-						return wraper.Mensaje = "Hace falta la cedula";
+						return wraper.Mensaje = "Hace falta la cedula o cedula no existente";
 					}
 				}
 				else

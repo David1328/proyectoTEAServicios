@@ -14,6 +14,7 @@ namespace Utilitarios
 		private String apellido_docente;
 		private String nit;
 		private int institucion_id;
+		private String numero_documento_paciente;
 		private String correo;
 		private String clave;
 
@@ -35,5 +36,7 @@ namespace Utilitarios
 
 		[NotMapped]
 		public string Clave { get => clave; set => clave = value; }
+		[NotMapped]
+		public string Numero_documento_paciente { get => numero_documento_paciente; set => numero_documento_paciente = value; }
 	}
 }

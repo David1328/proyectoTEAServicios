@@ -15,6 +15,12 @@ namespace Datos
 			}
 		}
 
+		public UUsers AcudienteODocenteExistente(string cedula, int rol)
+		{
+			return new Mapping().user.Where(x => (x.Numero_documento.Equals(cedula) && x.Rol_usuario_id.Equals(rol))).FirstOrDefault();
+		}
+
+
 		public UUsers verificarExistenciaDeCedulaRespectoIdRol(UUsers nuevoUsuario)
         {
 			return new Mapping().user.Where(x => (x.Numero_documento.Equals(nuevoUsuario.Numero_documento)) && (x.Rol_usuario_id.Equals(nuevoUsuario.Rol_usuario_id))).FirstOrDefault();

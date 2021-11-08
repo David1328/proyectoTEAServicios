@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LIngresoLogin.cs" />
+    <Compile Include="LPaciente.cs" />
     <Compile Include="LUserRegistercs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
