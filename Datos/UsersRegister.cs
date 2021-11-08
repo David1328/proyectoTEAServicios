@@ -24,11 +24,6 @@ namespace Datos
 		{
 			return new Mapping().user.Where(x => (x.Numero_documento.Equals(nuevoPaciente.Numero_documento))).FirstOrDefault();
 		}
-		
-		public URol verificarTipoDeRolId(UUsers nuevoUsuario)
-        {
-			return new Mapping().rol.Where(x => x.Id_rol.Equals(nuevoUsuario.Rol_usuario_id)).FirstOrDefault();
-        }
 
 		public void agregarAcudiente(UAcudiente nuevoAcudiente)
 		{

@@ -12,6 +12,7 @@ namespace Utilitarios
 		private String numero_documento;
 		private String clave_usuario;
 		private int rol_usuario_id;
+		private String sesion;
 
 		[Key]
 		[Column("id_usuario")]
@@ -22,5 +23,8 @@ namespace Utilitarios
 		public string Clave_usuario { get => clave_usuario; set => clave_usuario = value; }
 		[Column("tipo_usuario_id")]
 		public int Rol_usuario_id { get => rol_usuario_id; set => rol_usuario_id = value; }
+
+		[NotMapped]
+	    public string Sesion { get => sesion; set => sesion = value; }
 	}
 }
