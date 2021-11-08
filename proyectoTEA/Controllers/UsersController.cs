@@ -64,27 +64,29 @@ namespace proyectoTEA.Controllers
 			}
 		}
 		[Route("PostAgregarPaciente")]
-		public IHttpActionResult PostAgregarPaciente(UDocente nuevoDocente)
+		public IHttpActionResult PostAgregarPaciente(UPaciente nuevoPaciente)
 		{
 			string message;
-			try
-			{
-				message = new LUserRegistercs().agregarUsuarioDocente(nuevoDocente);
+			/*try
+			{*/
+				message = new LUserRegistercs().agregarUsuarioPaciente(nuevoPaciente);
 				switch (message)
 				{
 					case "Este usuario ya existe":
 						return Conflict();
 					case "Registrado con exito":
 						return Ok(message);
+					case "Hace falta la cedula":
+						return BadRequest(message);
 					default:
 						return BadRequest();
 				}
-			}
+			/*}
 			catch (Exception ex)
 			{
 				message = "Hubo un error" + ex;
 				return BadRequest();
-			}
+			}*/
 		}
 
 	}

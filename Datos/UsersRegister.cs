@@ -20,6 +20,10 @@ namespace Datos
 			return new Mapping().user.Where(x => (x.Numero_documento.Equals(nuevoUsuario.Numero_documento)) && (x.Rol_usuario_id.Equals(nuevoUsuario.Rol_usuario_id))).FirstOrDefault();
         }
 
+		public UUsers verificarExistenciaDocumentoPaciente(UUsers nuevoPaciente)
+		{
+			return new Mapping().user.Where(x => (x.Numero_documento.Equals(nuevoPaciente.Numero_documento))).FirstOrDefault();
+		}
 		
 		public URol verificarTipoDeRolId(UUsers nuevoUsuario)
         {
@@ -39,6 +43,15 @@ namespace Datos
 			using (var db = new Mapping())
 			{
 				db.docente.Add(nuevoDocente);
+				db.SaveChanges();
+			}
+		}
+
+		public void agregarPaciente(UPaciente nuevoPaciente)
+		{
+			using (var db = new Mapping())
+			{
+				db.paciente.Add(nuevoPaciente);
 				db.SaveChanges();
 			}
 		}

@@ -61,5 +61,38 @@ namespace LogicaDeNegocio
 				return "error: " + e;
 			}
 		}
+		public String agregarUsuarioPaciente(UPaciente nuevoPaciente)
+		{
+			/*try
+			{*/
+				Wraper wraper = new Wraper();
+				//Objeto la tabla usuario
+				UUsers nuevoUsuario = new UUsers();
+				nuevoUsuario.Numero_documento = nuevoPaciente.Numero_documento;
+				nuevoUsuario.Clave_usuario = nuevoPaciente.Clave;
+				nuevoUsuario.Rol_usuario_id = 3;
+				//Validaciones para la creacion de los objetos
+				if ((new Datos.UsersRegister().verificarExistenciaDocumentoPaciente(nuevoUsuario)) == null)
+				{
+					if (nuevoPaciente.Cedula_acudiente != null || nuevoPaciente.Cedula_docente != null)
+					{
+						new Datos.UsersRegister().agregarUsuario(nuevoUsuario);
+						new Datos.UsersRegister().agregarPaciente(nuevoPaciente);
+						return wraper.Mensaje = "Registrado con exito";
+					}else
+					{
+						return wraper.Mensaje = "Hace falta la cedula";
+					}
+				}
+				else
+				{
+					return wraper.Mensaje = "Este usuario ya existe";
+				}
+			/*}
+			catch (Exception e)
+			{
+				return "error: " + e;
+			}*/
+		}
 	}
 }

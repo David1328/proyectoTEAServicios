@@ -91,6 +91,7 @@
     <Compile Include="UAcceso.cs" />
     <Compile Include="UAcudiente.cs" />
     <Compile Include="UDocente.cs" />
+    <Compile Include="UPaciente.cs" />
     <Compile Include="URol.cs" />
     <Compile Include="UUsers.cs" />
     <Compile Include="Wraper.cs" />
