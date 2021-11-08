@@ -6,32 +6,26 @@ namespace LogicaDeNegocio
 	public class LUserRegistercs
 	{
 
-		public String agregarUsuario(UUsers nuevoUsuario)
+		public String agregarUsuarioAcudiente(UAcudiente nuevoAcudiente)
 		{
 			try
 			{
 				Wraper wraper = new Wraper();
-
-                if ((new Datos.UsersRegister().verificarTipoDeRolId(nuevoUsuario)) == null)
-                {
-					return wraper.Mensaje = "Rol no existe";
-                }
-                else
-                {
-					if ((new Datos.UsersRegister().verificarExistenciaDeCedulaRespectoIdRol(nuevoUsuario)) == null)
-					{
-						new Datos.UsersRegister().agregarUsuario(nuevoUsuario);
-						return wraper.Mensaje = "Registrado con exito";
-
-					}
-					else if ((new Datos.UsersRegister().verificarExistenciaDeCedulaRespectoIdRol(nuevoUsuario)) != null)
-					{
-						return wraper.Mensaje = "Este usuario ya existe";
-					}
-					else
-					{
-						return "error no validado";
-					}
+				//Objeto la tabla usuario
+				UUsers nuevoUsuario = new UUsers();
+				nuevoUsuario.Numero_documento = nuevoAcudiente.Cedula;
+				nuevoUsuario.Clave_usuario = nuevoAcudiente.Clave;
+				nuevoUsuario.Rol_usuario_id = 2;
+				//Validaciones para la creacion de los objetos
+				if ((new Datos.UsersRegister().verificarExistenciaDeCedulaRespectoIdRol(nuevoUsuario)) == null && !(new Datos.UsersRegister().revisarExistenciaDeCorreo(nuevoAcudiente.Correo)))
+				{
+					new Datos.UsersRegister().agregarUsuario(nuevoUsuario);
+					new Datos.UsersRegister().agregarAcudiente(nuevoAcudiente);
+					return wraper.Mensaje = "Registrado con exito";
+				}
+				else
+				{
+					return wraper.Mensaje = "Este usuario ya existe";
 				}
 			}
 			catch (Exception e)
@@ -40,5 +34,32 @@ namespace LogicaDeNegocio
 			}
 		}
 
+		public String agregarUsuarioDocente(UDocente nuevoDocente)
+		{
+			try
+			{
+				Wraper wraper = new Wraper();
+				//Objeto la tabla usuario
+				UUsers nuevoUsuario = new UUsers();
+				nuevoUsuario.Numero_documento = nuevoDocente.Cedula;
+				nuevoUsuario.Clave_usuario = nuevoDocente.Clave;
+				nuevoUsuario.Rol_usuario_id = 1;
+				//Validaciones para la creacion de los objetos
+				if ((new Datos.UsersRegister().verificarExistenciaDeCedulaRespectoIdRol(nuevoUsuario)) == null && !(new Datos.UsersRegister().revisarExistenciaDeCorreo(nuevoDocente.Correo)))
+				{
+					new Datos.UsersRegister().agregarUsuario(nuevoUsuario);
+					new Datos.UsersRegister().agregarDocente(nuevoDocente);
+					return wraper.Mensaje = "Registrado con exito";
+				}
+				else 
+				{
+					return wraper.Mensaje = "Este usuario ya existe";
+				}
+			}
+			catch (Exception e)
+			{
+				return "error: " + e;
+			}
+		}
 	}
 }

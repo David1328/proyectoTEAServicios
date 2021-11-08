@@ -12,7 +12,7 @@ namespace Datos
         public UUsers verificarLogin(UUsers usuarioE)
         {
 
-            return new Mapping().user.Where(x => (x.Usuario.Equals(usuarioE.Usuario)) && (x.Clave_usuario.Equals(usuarioE.Clave_usuario))).FirstOrDefault();
+            return new Mapping().user.Where(x => (x.Numero_documento.Equals(usuarioE.Numero_documento)) && (x.Clave_usuario.Equals(usuarioE.Clave_usuario))).FirstOrDefault();
         }
 
         public void agregarAcceso(UAcceso accesoUsuarioE)

@@ -14,7 +14,7 @@ namespace proyectoTEA.Controllers
     [RoutePrefix("api/login")]
     public class LoginController : ApiController
     {
-
+		/*
         [Route("PostIngresoLogin")]
 
 		public string PostIngresoLogin(UUsers usuarioE)
@@ -22,7 +22,7 @@ namespace proyectoTEA.Controllers
 			string message;
 			try
 			{
-				/*System.Web.HttpContext.Current.Session["login"] = */
+				/*System.Web.HttpContext.Current.Session["login"] = 
 				string sesion = usuarioE.Usuario;
 				message = new LIngresoLogin().ingresoLogin(usuarioE, sesion);
 				return message;
@@ -33,6 +33,6 @@ namespace proyectoTEA.Controllers
 				return message;
 			}
 		}
-
+*/
 	}
 }

@@ -447,3 +447,6 @@ C:\Users\asant\OneDrive\Escritorio\universidad\materias\PI\proyectoTEAServicios\
 C:\Users\asant\OneDrive\Escritorio\universidad\materias\PI\proyectoTEAServicios\proyectoTEA\bin\System.Web.Cors.dll
 C:\Users\asant\OneDrive\Escritorio\universidad\materias\PI\proyectoTEAServicios\proyectoTEA\bin\System.Web.Http.Cors.dll
 C:\Users\asant\OneDrive\Escritorio\universidad\materias\PI\proyectoTEAServicios\proyectoTEA\bin\System.Web.Http.Cors.xml
+C:\Users\David\source\repos\proyectoTEA\proyectoTEA\bin\System.Web.Cors.dll
+C:\Users\David\source\repos\proyectoTEA\proyectoTEA\bin\System.Web.Http.Cors.dll
+C:\Users\David\source\repos\proyectoTEA\proyectoTEA\bin\System.Web.Http.Cors.xml

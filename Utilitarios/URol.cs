@@ -10,7 +10,7 @@ namespace Utilitarios
 {
 
     [Serializable]
-    [Table("rol", Schema = "usuarios")]
+    [Table("rol_usuario", Schema = "usuarios")]
     public class URol
     {
         private int id_rol;

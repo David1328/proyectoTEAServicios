@@ -16,23 +16,76 @@ namespace proyectoTEA.Controllers
 	[RoutePrefix("api/users")]
 	public class UsersController : ApiController
     {
-
-		[Route("PostAgregar")]
-		public string PostAgregar(UUsers nuevoUsuario)
+		[Route("PostAgregarAcudiente")]
+		public IHttpActionResult PostAgregarAcudiente(UAcudiente nuevoAcudiente)
 		{
 			string message;
 			try
 			{
-				message = new LUserRegistercs().agregarUsuario(nuevoUsuario);
-				return message;
+				message = new LUserRegistercs().agregarUsuarioAcudiente(nuevoAcudiente);
+				switch (message)
+				{
+					case "Este usuario ya existe":
+						return Conflict();
+					case "Registrado con exito":
+						return Ok(message);
+					default:
+						return BadRequest();
+				}
 			}
 			catch (Exception ex)
 			{
 				message = "Hubo un error" + ex;
-				return message;
+				return BadRequest();
 			}
 		}
 
+		[Route("PostAgregarDocente")]
+		public IHttpActionResult PostAgregarDocente(UDocente nuevoDocente)
+		{
+			string message;
+			try
+			{
+				message = new LUserRegistercs().agregarUsuarioDocente(nuevoDocente);
+				switch (message)
+				{
+					case "Este usuario ya existe":
+						return Conflict();
+					case "Registrado con exito":
+						return Ok(message);
+					default:
+						return BadRequest();
+				}
+			}
+			catch (Exception ex)
+			{
+				message = "Hubo un error" + ex;
+				return BadRequest();
+			}
+		}
+		[Route("PostAgregarPaciente")]
+		public IHttpActionResult PostAgregarPaciente(UDocente nuevoDocente)
+		{
+			string message;
+			try
+			{
+				message = new LUserRegistercs().agregarUsuarioDocente(nuevoDocente);
+				switch (message)
+				{
+					case "Este usuario ya existe":
+						return Conflict();
+					case "Registrado con exito":
+						return Ok(message);
+					default:
+						return BadRequest();
+				}
+			}
+			catch (Exception ex)
+			{
+				message = "Hubo un error" + ex;
+				return BadRequest();
+			}
+		}
 
 	}
 }
