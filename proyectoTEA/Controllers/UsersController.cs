@@ -67,8 +67,8 @@ namespace proyectoTEA.Controllers
 		public IHttpActionResult PostAgregarPaciente(UPaciente nuevoPaciente)
 		{
 			string message;
-			/*try
-			{*/
+			try
+			{
 				message = new LUserRegistercs().agregarUsuarioPaciente(nuevoPaciente);
 				switch (message)
 				{
@@ -81,12 +81,12 @@ namespace proyectoTEA.Controllers
 					default:
 						return BadRequest();
 				}
-			/*}
+			}
 			catch (Exception ex)
 			{
 				message = "Hubo un error" + ex;
 				return BadRequest();
-			}*/
+			}
 		}
 
 	}

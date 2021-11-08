@@ -63,8 +63,8 @@ namespace LogicaDeNegocio
 		}
 		public String agregarUsuarioPaciente(UPaciente nuevoPaciente)
 		{
-			/*try
-			{*/
+			try
+			{
 				Wraper wraper = new Wraper();
 				//Objeto la tabla usuario
 				UUsers nuevoUsuario = new UUsers();
@@ -88,11 +88,11 @@ namespace LogicaDeNegocio
 				{
 					return wraper.Mensaje = "Este usuario ya existe";
 				}
-			/*}
+			}
 			catch (Exception e)
 			{
 				return "error: " + e;
-			}*/
+			}
 		}
 	}
 }
