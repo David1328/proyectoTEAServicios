@@ -30,13 +30,13 @@ namespace proyectoTEA.Controllers
 					case "No perteneces a la misma institucion":
 						return Conflict();
 					default:
-						return BadRequest();
+						return BadRequest(message);
 				}
 			}
 			catch (Exception ex)
 			{
 				message = "Hubo un error" + ex;
-				return BadRequest();
+				return BadRequest(message);
 			}
 		}
 	}

@@ -31,13 +31,13 @@ namespace proyectoTEA.Controllers
 					case "Registrado con exito":
 						return Ok(message);
 					default:
-						return BadRequest();
+						return BadRequest(message);
 				}
 			}
 			catch (Exception ex)
 			{
 				message = "Hubo un error" + ex;
-				return BadRequest();
+				return BadRequest(message);
 			}
 		}
 
