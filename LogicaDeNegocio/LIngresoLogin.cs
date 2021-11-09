@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Datos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,27 +10,26 @@ namespace LogicaDeNegocio
 {
     public class LIngresoLogin
     {
-        public async Task<String> ingresoLogin(UUsers usuarioE)
+        public async Task<Wraper> ingresoLogin(UUsers usuarioE)
         {
             Wraper wraper = new Wraper();
 
             try
             {
-                if (new Datos.UsersLogin().verificarTipoDeRolId(usuarioE) == null)
-                {
-                    return wraper.Mensaje = "Este rol no existe";
-                }
-                else
-                {
+
                     if (new Datos.UsersLogin().verificarExistenciaUsuario(usuarioE) == null)
                     {
-                        return wraper.Mensaje = "Este usuario no se encuentra registrado, por favor registrese.";
+                        wraper.Mensaje = "Este usuario no se encuentra registrado, por favor registrese.";
+                        wraper.WraperUsuario = null;
+                        return wraper;
                     }
                     else
                     {
                         if (new Datos.UsersLogin().verificarLogin(usuarioE) == null)
                         {
-                            return wraper.Mensaje = "no se puso ingresar, contraseña incorrecta";
+                            wraper.Mensaje = "no se puso ingresar, contraseña incorrecta";
+                            wraper.WraperUsuario = null;
+                            return wraper;
                         }
                         else
                         {
@@ -37,15 +37,23 @@ namespace LogicaDeNegocio
                             acceso.Fecha_inicioSesion = DateTime.Now;
                             acceso.Sesion = usuarioE.Sesion;
                             new Datos.UsersLogin().agregarAcceso(acceso);
-                            return wraper.Mensaje = "redireccionar a pagina perfil o inicio";
+                            wraper.Mensaje = "redireccionar a pagina perfil o inicio";
+                            wraper.WraperUsuario = usuarioE;
+                            return wraper;
                         }
                     }
-                }
+                
             }
             catch (Exception e)
             {
-                return "error: " + e;
+                wraper.Mensaje = "error: " + e;
+                return wraper;
             }
+        }
+
+        public async Task guardarToken(LoginToken token)
+        {
+            await new Seguridad().guardarTokenLogin(token);
         }
     }
 }

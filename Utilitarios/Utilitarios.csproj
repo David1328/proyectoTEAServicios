@@ -87,6 +87,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoginToken.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UAcceso.cs" />
     <Compile Include="UAcudiente.cs" />

@@ -450,3 +450,11 @@ C:\Users\asant\OneDrive\Escritorio\universidad\materias\PI\proyectoTEAServicios\
 C:\Users\David\source\repos\proyectoTEA\proyectoTEA\bin\System.Web.Cors.dll
 C:\Users\David\source\repos\proyectoTEA\proyectoTEA\bin\System.Web.Http.Cors.dll
 C:\Users\David\source\repos\proyectoTEA\proyectoTEA\bin\System.Web.Http.Cors.xml
+C:\Users\asant\OneDrive\Escritorio\universidad\materias\PI\proyectoTEAServicios\proyectoTEA\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\asant\OneDrive\Escritorio\universidad\materias\PI\proyectoTEAServicios\proyectoTEA\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\asant\OneDrive\Escritorio\universidad\materias\PI\proyectoTEAServicios\proyectoTEA\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\asant\OneDrive\Escritorio\universidad\materias\PI\proyectoTEAServicios\proyectoTEA\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\asant\OneDrive\Escritorio\universidad\materias\PI\proyectoTEAServicios\proyectoTEA\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\asant\OneDrive\Escritorio\universidad\materias\PI\proyectoTEAServicios\proyectoTEA\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\asant\OneDrive\Escritorio\universidad\materias\PI\proyectoTEAServicios\proyectoTEA\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\asant\OneDrive\Escritorio\universidad\materias\PI\proyectoTEAServicios\proyectoTEA\bin\System.IdentityModel.Tokens.Jwt.xml

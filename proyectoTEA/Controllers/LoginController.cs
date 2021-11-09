@@ -1,4 +1,5 @@
 ﻿using LogicaDeNegocio;
+using proyectoTEA.Seguridad;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,20 @@ namespace proyectoTEA.Controllers
 
 		public async Task<IHttpActionResult> PostIngresoLogin(UUsers usuarioE)
 		{
-			string message;
 			try
 			{
-				message = await new LIngresoLogin().ingresoLogin(usuarioE);
-				return Ok(message);
+				Wraper wp = new Wraper();
+				wp = await new LIngresoLogin().ingresoLogin(usuarioE);
+
+                if (wp.WraperUsuario == null)
+                {
+					return BadRequest(wp.Mensaje);
+                }
+                else
+                {
+					wp.Token = TokenGenerator.GenerateTokenJwt(usuarioE);
+					return Ok(wp);
+				}
 			}
 			catch (Exception ex)
 			{

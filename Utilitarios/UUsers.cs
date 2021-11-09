@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Utilitarios
 {
 	[Serializable]
-	[Table("usuario", Schema ="usuarios")]
+	[Table("usuario", Schema = "usuarios")]
 	public class UUsers
 	{
 		private int usuario_id;
@@ -25,6 +25,6 @@ namespace Utilitarios
 		public int Rol_usuario_id { get => rol_usuario_id; set => rol_usuario_id = value; }
 
 		[NotMapped]
-	    public string Sesion { get => sesion; set => sesion = value; }
+		public string Sesion { get => sesion; set => sesion = value; }
 	}
 }

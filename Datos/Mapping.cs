@@ -14,4 +14,7 @@ public class Mapping : DbContext
 	public DbSet<URol> rol { get; set; }
 	public DbSet<UAcceso> acceso { get; set; }
 
+	/*token */
+	public DbSet<LoginToken> login_token { get; set; }
+
 }
