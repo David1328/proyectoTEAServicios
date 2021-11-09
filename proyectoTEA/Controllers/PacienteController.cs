@@ -9,7 +9,7 @@ using Utilitarios;
 
 namespace proyectoTEA.Controllers
 {
-	/*
+	
 	[RoutePrefix("api/paciente")]
 	public class PacienteController : ApiController
     {
@@ -39,5 +39,5 @@ namespace proyectoTEA.Controllers
 				return BadRequest();
 			}
 		}
-	}*/
+	}
 }

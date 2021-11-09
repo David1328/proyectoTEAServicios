@@ -9,7 +9,7 @@ namespace LogicaDeNegocio
 {
 	public class LPaciente
 	{
-		/*
+		
 		public String enlazarDocentePaciente(UDocente docente)
 		{
 			//Condicional para verifcar si el niño ya tiene un docente
@@ -30,7 +30,7 @@ namespace LogicaDeNegocio
 			{
 				return "Ya existe un enlace o cedula no creada";
 			}
-		}*/
+		}
 
 	}
 }
