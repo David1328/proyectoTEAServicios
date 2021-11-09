@@ -33,6 +33,7 @@ namespace proyectoTEA.Controllers
                 }
                 else
                 {
+					usuarioE.Rol_usuario_id = wp.WraperUsuario.Rol_usuario_id;
 					wp.Token = TokenGenerator.GenerateTokenJwt(usuarioE);
 					return Ok(wp);
 				}
