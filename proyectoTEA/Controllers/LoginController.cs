@@ -1,4 +1,5 @@
 ﻿using LogicaDeNegocio;
+using Newtonsoft.Json.Linq;
 using proyectoTEA.Seguridad;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace proyectoTEA.Controllers
 	[RoutePrefix("api/login")]
     public class LoginController : ApiController
     {
-		[HttpPost]
+		
 		[Route("PostIngresoLogin")]
 
 		public async Task<IHttpActionResult> PostIngresoLogin(UUsers usuarioE)
@@ -44,5 +45,24 @@ namespace proyectoTEA.Controllers
 			}
 		}
 
-	}
+        [HttpPost]
+        [Route("api/perfil/postCerrarSesion")]
+        //{"usuario": "string"}
+        public IHttpActionResult postCerrarSesion([FromBody] JObject usuario)
+        {
+            try
+            {
+                UUsers datos = new UUsers();
+                datos.Numero_documento = usuario["usuario"].ToString();
+                return Ok(new LIngresoLogin().cerrarsession(datos));
+            }
+            catch (Exception ex)
+            {
+                var mensaje = "surgio el siguente error: " + ex.Message.ToString();
+                return BadRequest(mensaje);
+            }
+
+        }
+
+    }
 }

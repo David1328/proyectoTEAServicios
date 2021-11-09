@@ -31,5 +31,19 @@ namespace proyectoTEA.Controllers
                 return BadRequest("surgio el siguente error: " + ex.Message.ToString());
             }
         }
+
+        [HttpPost]
+        [Route("PostAgregarActividad")]
+        public IHttpActionResult PostAgregarActividad(UActividad actividadE)
+        {
+            try
+            {
+                return Ok(new LActividad().agregarActividad(actividadE));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+            }
+        }
     }
 }

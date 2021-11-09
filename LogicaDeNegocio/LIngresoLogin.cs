@@ -55,5 +55,25 @@ namespace LogicaDeNegocio
         {
             await new Seguridad().guardarTokenLogin(token);
         }
+
+        //Numero_documento
+        public string cerrarsession(UUsers session)
+        {
+            try
+            {
+                UUsers datos = new UsersLogin().datosUsuarioSegunDocumento(session);
+                new Seguridad().cerrarAcceso(datos.Usuario_id);
+                new Seguridad().borrarTokenLogin(datos);
+
+                string url = "Login.aspx";
+                return url;
+            }
+            catch
+            {
+                string errorMjs = "Usuario Inexistente";
+                return errorMjs;
+            }
+
+        }
     }
 }

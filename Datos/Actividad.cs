@@ -9,6 +9,20 @@ namespace Datos
 {
     public class Actividad
     {
+
+        public int verificarCantidadMaximaActividadesPorDocente(UActividad actividadE)
+        {
+            return new Mapping().actividad.Where(x => (x.Docente_creador.Equals(actividadE.Docente_creador))).Count();
+        }
+        public void agregarActividad(UActividad actividadE){
+
+            using (var db = new Mapping())
+            {
+                db.actividad.Add(actividadE);
+                db.SaveChanges();
+            }
+        }
+
         public List<UActividad> listaActividadesDocente(UActividad idDocente)
         {
             using (var db = new Mapping())
