@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
@@ -11,28 +12,25 @@ namespace proyectoTEA.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
 
-    [RoutePrefix("api/login")]
+
+	[RoutePrefix("api/login")]
     public class LoginController : ApiController
     {
-		/*
-        [Route("PostIngresoLogin")]
+		[HttpPost]
+		[Route("PostIngresoLogin")]
 
-		public string PostIngresoLogin(UUsers usuarioE)
+		public async Task<IHttpActionResult> PostIngresoLogin(UUsers usuarioE)
 		{
 			string message;
 			try
 			{
-				/*System.Web.HttpContext.Current.Session["login"] = 
-				string sesion = usuarioE.Usuario;
-				message = new LIngresoLogin().ingresoLogin(usuarioE, sesion);
-				return message;
+				message = await new LIngresoLogin().ingresoLogin(usuarioE);
+				return Ok(message);
 			}
 			catch (Exception ex)
 			{
-				message = "Hubo un error" + ex;
-				return message;
+				return InternalServerError(ex);
 			}
 		}
-*/
 	}
 }
