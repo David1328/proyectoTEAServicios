@@ -13,7 +13,9 @@ namespace Datos
 
 		public UPaciente verificarExistenciaDocenteEnlazar(UDocente docenteAEnlazar)
 		{
+
 			return new Mapping().paciente.Where(x=>(x.Numero_documento.Equals(docenteAEnlazar.Numero_documento_paciente))).FirstOrDefault();
+
 		}
 
 		public bool verificarDocentePacienteMismaInstitucion(UDocente docenteAEnlazar)
