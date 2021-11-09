@@ -87,6 +87,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LActividad.cs" />
     <Compile Include="LIngresoLogin.cs" />
     <Compile Include="LPaciente.cs" />
     <Compile Include="LUserRegistercs.cs" />

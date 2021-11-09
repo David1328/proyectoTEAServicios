@@ -27,6 +27,27 @@ namespace Datos
             return usuario;
         }
 
+        public async Task<UAcudiente> datosAcudienteUsuarioSegunDocumento(string cedulaE)
+        {
+            UAcudiente acudiente = new UAcudiente();
+            acudiente = new Mapping().acudiente.Where(x => x.Cedula.Equals(cedulaE)).FirstOrDefault();
+            return acudiente;
+        }
+
+        public async Task<UPaciente> datosPacienteSegunDocumento(string cedulaE)
+        {
+            UPaciente usuario = new UPaciente();
+            usuario = new Mapping().paciente.Where(x => (x.Numero_documento.Equals(cedulaE))).FirstOrDefault();
+            return usuario;
+        }
+
+        public async Task<UDocente> datosDocenteUsuarioSegunDocumento(string cedulaE)
+        {
+            UDocente usuario = new UDocente();
+            usuario = new Mapping().docente.Where(x => (x.Cedula.Equals(cedulaE))).FirstOrDefault();
+            return usuario;
+        }
+
         public void agregarAcceso(UAcceso accesoUsuarioE)
         {
             using (var db = new Mapping()) {

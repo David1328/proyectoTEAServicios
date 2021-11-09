@@ -1,5 +1,6 @@
 ﻿using Datos;
 using System;
+using System.Threading.Tasks;
 using Utilitarios;
 
 namespace LogicaDeNegocio
@@ -97,5 +98,67 @@ namespace LogicaDeNegocio
 				return "error: " + e;
 			}
 		}
+
+
+		public async Task<UAcudiente> obtenerDatosAcudiente(string cedulaE)
+        {
+			UUsers usuario = new UUsers();
+			UAcudiente acudiente = new UAcudiente();
+			usuario.Numero_documento = cedulaE;
+
+			usuario = new Datos.UsersLogin().verificarExistenciaUsuario(usuario);
+
+            if (usuario != null)
+            {
+				return acudiente = await new Datos.UsersLogin().datosAcudienteUsuarioSegunDocumento(cedulaE);
+            }
+            else
+            {
+				acudiente = null;
+				return acudiente;
+            }
+
+		}
+
+		public async Task<UDocente> obtenerDatosDocente(string cedulaE)
+		{
+			UUsers usuario = new UUsers();
+			UDocente acudiente = new UDocente();
+			usuario.Numero_documento = cedulaE;
+
+			usuario = new Datos.UsersLogin().verificarExistenciaUsuario(usuario);
+
+			if (usuario != null)
+			{
+				return acudiente = await new Datos.UsersLogin().datosDocenteUsuarioSegunDocumento(cedulaE);
+			}
+			else
+			{
+				acudiente = null;
+				return acudiente;
+			}
+
+		}
+
+		public async Task<UPaciente> obtenerDatosPaciente(string cedulaE)
+		{
+			UUsers usuario = new UUsers();
+			UPaciente acudiente = new UPaciente();
+			usuario.Numero_documento = cedulaE;
+
+			usuario = new Datos.UsersLogin().verificarExistenciaUsuario(usuario);
+
+			if (usuario != null)
+			{
+				return acudiente = await new Datos.UsersLogin().datosPacienteSegunDocumento(cedulaE);
+			}
+			else
+			{
+				acudiente = null;
+				return acudiente;
+			}
+
+		}
+
 	}
 }

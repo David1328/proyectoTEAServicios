@@ -257,3 +257,4 @@ C:\Users\asant\OneDrive\Escritorio\universidad\materias\PI\proyectoTEAServicios\
 C:\Users\asant\OneDrive\Escritorio\universidad\materias\PI\proyectoTEAServicios\Utilitarios\obj\Debug\Utilitarios.csproj.CopyComplete
 C:\Users\asant\OneDrive\Escritorio\universidad\materias\PI\proyectoTEAServicios\Utilitarios\obj\Debug\Utilitarios.dll
 C:\Users\asant\OneDrive\Escritorio\universidad\materias\PI\proyectoTEAServicios\Utilitarios\obj\Debug\Utilitarios.pdb
+C:\Users\asant\OneDrive\Escritorio\universidad\materias\PI\proyectoTEAServicios\Utilitarios\obj\Debug\Utilitarios.csproj.AssemblyReference.cache
