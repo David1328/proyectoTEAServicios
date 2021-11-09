@@ -38,7 +38,7 @@ namespace LogicaDeNegocio
                             acceso.Sesion = usuarioE.Sesion;
                             new Datos.UsersLogin().agregarAcceso(acceso);
                             wraper.Mensaje = "redireccionar a pagina perfil o inicio";
-                            wraper.WraperUsuario = usuarioE;
+                            wraper.WraperUsuario = new Datos.UsersLogin().datosUsuarioSegunDocumento(usuarioE);
                             return wraper;
                         }
                     }

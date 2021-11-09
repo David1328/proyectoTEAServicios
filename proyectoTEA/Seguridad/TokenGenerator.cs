@@ -26,8 +26,8 @@ namespace proyectoTEA.Seguridad
 
                 // create a claimsIdentity 
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
-                new Claim(ClaimTypes.Name, user.Numero_documento),
-                /*new Claim(ClaimTypes.Role, user.Rol_usuario_id.ToString())*/
+                new Claim("Usuario", user.Numero_documento),
+                new Claim("Rol", user.Rol_usuario_id.ToString())
 
             });
 

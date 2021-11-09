@@ -20,6 +20,13 @@ namespace Datos
             return new Mapping().user.Where(x => (x.Numero_documento.Equals(usuarioE.Numero_documento)) && (x.Clave_usuario.Equals(usuarioE.Clave_usuario))).FirstOrDefault();
         }
 
+        public UUsers datosUsuarioSegunDocumento(UUsers usuarioE)
+        {
+            UUsers usuario = new UUsers();
+            usuario = new Mapping().user.Where(x => (x.Numero_documento.Equals(usuarioE.Numero_documento))).FirstOrDefault();
+            return usuario;
+        }
+
         public void agregarAcceso(UAcceso accesoUsuarioE)
         {
             using (var db = new Mapping()) {
