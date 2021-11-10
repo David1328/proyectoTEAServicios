@@ -46,7 +46,7 @@ namespace proyectoTEA.Controllers
 		}
 
         [HttpPost]
-        [Route("api/perfil/postCerrarSesion")]
+        [Route("PostCerrarSesion")]
         //{"usuario": "string"}
         public IHttpActionResult postCerrarSesion([FromBody] JObject usuario)
         {

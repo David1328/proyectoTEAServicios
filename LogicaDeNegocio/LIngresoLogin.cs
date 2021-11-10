@@ -65,7 +65,7 @@ namespace LogicaDeNegocio
                 new Seguridad().cerrarAcceso(datos.Usuario_id);
                 new Seguridad().borrarTokenLogin(datos);
 
-                string url = "Login.aspx";
+                string url = "redireccionar";
                 return url;
             }
             catch
