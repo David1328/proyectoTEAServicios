@@ -45,5 +45,24 @@ namespace Datos
 
 		}
 
+		public List<UPaciente> obtenerPacientesPorEnlazar(int id)
+		{
+			using (var db = new Mapping())
+			{
+				return id == 1 ? db.paciente.Where(x => x.Cedula_docente.Equals(null)).ToList() : 
+					db.paciente.Where(x => x.Cedula_acudiente.Equals(null)).ToList();
+			}
+			//new Mapping().paciente.ToList()
+		}
+		public List<UPaciente> obtenerPacientesEnlazados(int id)
+		{
+			using (var db = new Mapping())
+			{
+				return id == 1 ? db.paciente.Where(x => x.Cedula_docente!=null).ToList() :
+					db.paciente.Where(x => x.Cedula_acudiente!=null).ToList();
+			}
+			//new Mapping().paciente.ToList()
+		}
+
 	}
 }

@@ -32,5 +32,15 @@ namespace LogicaDeNegocio
 			}
 		}
 
+		public List<UPaciente> obtenerEstudiantesPorEnlazar(int id)
+		{
+			return new Datos.UserPaciente().obtenerPacientesPorEnlazar(id);
+		}
+
+		public List<UPaciente> obtenerEstudiantesEnlazados(int id)
+		{
+			return new Datos.UserPaciente().obtenerPacientesEnlazados(id);
+		}
+
 	}
 }

@@ -77,8 +77,8 @@ namespace LogicaDeNegocio
 				//Validaciones para la creacion de los objetos
 				if ((new Datos.UsersRegister().verificarExistenciaDocumentoPaciente(nuevoUsuario)) == null)
 				{
-					if ((nuevoPaciente.Cedula_acudiente != null && (buscar.AcudienteODocenteExistente(nuevoPaciente.Cedula_acudiente,2)) != null) 
-						||nuevoPaciente.Cedula_docente != null && (buscar.AcudienteODocenteExistente(nuevoPaciente.Cedula_docente, 1)) != null)
+					//(nuevoPaciente.Cedula_acudiente != null && (buscar.AcudienteODocenteExistente(nuevoPaciente.Cedula_acudiente,2)) != null) 
+					if (nuevoPaciente.Cedula_docente != null && (buscar.AcudienteODocenteExistente(nuevoPaciente.Cedula_docente, 1)) != null)
 					{
 						new Datos.UsersRegister().agregarUsuario(nuevoUsuario);
 						new Datos.UsersRegister().agregarPaciente(nuevoPaciente);
