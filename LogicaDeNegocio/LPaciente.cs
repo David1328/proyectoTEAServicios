@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Utilitarios;
 
 namespace LogicaDeNegocio
@@ -40,6 +37,20 @@ namespace LogicaDeNegocio
 		public List<UPaciente> obtenerEstudiantesEnlazados(int id)
 		{
 			return new Datos.UserPaciente().obtenerPacientesEnlazados(id);
+		}
+
+
+		public string enlazarConEstudiante(UPaciente datosAenlazar)
+		{
+			if (datosAenlazar.Cedula_docente != null)
+			{
+				new Datos.UserPaciente().enlazarDocenteConEstudiante(datosAenlazar);
+
+			}else if (datosAenlazar.Cedula_acudiente != null)
+			{
+				new Datos.UserPaciente().enlazarAcudienteConEstudiante(datosAenlazar);
+			}
+			return "Se enlazo con exito";
 		}
 
 	}

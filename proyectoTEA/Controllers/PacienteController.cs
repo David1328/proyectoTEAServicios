@@ -1,9 +1,5 @@
 ﻿using LogicaDeNegocio;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http.Cors;
 using System.Web.Http;
 using Utilitarios;
@@ -15,9 +11,9 @@ namespace proyectoTEA.Controllers
 	[RoutePrefix("api/paciente")]
 	public class PacienteController : ApiController
     {
-		[Route("enlazarDocentePaciente")]
+		[Route("crearDocentePaciente")]
 		[HttpPut]
-		public IHttpActionResult enlazarDocentePaciente(UDocente uDocente)
+		public IHttpActionResult crearDocentePaciente(UDocente uDocente)
 		{
 			string message;
 			try
@@ -67,6 +63,23 @@ namespace proyectoTEA.Controllers
 			try
 			{
 				return Ok(new LPaciente().obtenerEstudiantesEnlazados(id));
+			}
+			catch (Exception ex)
+			{
+				message = "Hubo un error" + ex;
+				return BadRequest(message);
+			}
+		}
+		[Route("enlazarConEstudiante")]
+		[HttpPut]
+
+		public IHttpActionResult enlazarEstudianteConEstudiante(UPaciente datosAEnlazar)
+		{
+			string message;
+			try
+			{
+				message = new LPaciente().enlazarConEstudiante(datosAEnlazar);
+				return Ok(message);
 			}
 			catch (Exception ex)
 			{

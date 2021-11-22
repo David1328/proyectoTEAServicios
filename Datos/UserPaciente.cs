@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Utilitarios;
 
 namespace Datos
@@ -63,6 +61,28 @@ namespace Datos
 			}
 			//new Mapping().paciente.ToList()
 		}
+		public void enlazarDocenteConEstudiante(UPaciente datos)
+		{
+			using (var db = new Mapping())
+			{
+				UPaciente pacienteAEnlazar = db.paciente.Where(x => x.Numero_documento.Equals(datos.Numero_documento)).FirstOrDefault();
+				pacienteAEnlazar.Cedula_docente = datos.Cedula_docente;
+				var entry = db.Entry(pacienteAEnlazar);
+				entry.State = EntityState.Modified;
+				db.SaveChanges();
 
+			}
+		}
+		public void enlazarAcudienteConEstudiante(UPaciente datos)
+		{
+			using (var db = new Mapping())
+			{
+				UPaciente pacienteAEnlazar = db.paciente.Where(x => x.Numero_documento.Equals(datos.Numero_documento)).FirstOrDefault();
+				pacienteAEnlazar.Cedula_acudiente = datos.Cedula_acudiente;
+				var entry = db.Entry(pacienteAEnlazar);
+				entry.State = EntityState.Modified;
+				db.SaveChanges();
+			}
+		}
 	}
 }

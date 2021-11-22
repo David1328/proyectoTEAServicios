@@ -23,7 +23,7 @@ namespace Datos
 
 		public UUsers verificarExistenciaDeCedulaRespectoIdRol(UUsers nuevoUsuario)
         {
-			return new Mapping().user.Where(x => (x.Numero_documento.Equals(nuevoUsuario.Numero_documento)) && (x.Rol_usuario_id.Equals(nuevoUsuario.Rol_usuario_id))).FirstOrDefault();
+			return new Mapping().user.Where(x => (x.Numero_documento.Equals(nuevoUsuario.Numero_documento)) && (x.Rol_usuario_id.Equals(nuevoUsuario.Rol_usuario_id) && (x.Rol_usuario_id==3))).FirstOrDefault();
         }
 
 		public UUsers verificarExistenciaDocumentoPaciente(UUsers nuevoPaciente)
