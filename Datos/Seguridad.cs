@@ -8,8 +8,15 @@ using Utilitarios;
 
 namespace Datos
 {
-    public class Seguridad
+    public class Seguridad : Mapping
     {
+        public UsersLogin UsersLogin
+        {
+            get => default(UsersLogin);
+            set
+            {
+            }
+        }
 
         public async Task guardarTokenLogin(LoginToken token)
         {

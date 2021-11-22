@@ -4,9 +4,16 @@ using Utilitarios;
 namespace Datos
 {
 	public class UsersRegister
-	{
+    {
+        public UsersLogin UsersLogin
+        {
+            get => default(UsersLogin);
+            set
+            {
+            }
+        }
 
-		public void agregarUsuario(UUsers nuevoUsuario)
+        public void agregarUsuario(UUsers nuevoUsuario)
 		{
 			/*en registro el usuario sera el num de documento, luego se puede modificar*/
 			using (var db = new Mapping()) {
