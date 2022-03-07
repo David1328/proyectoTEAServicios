@@ -18,8 +18,8 @@ namespace proyectoTEA.Controllers
 	[RoutePrefix("api/login")]
     public class LoginController : ApiController
     {
-		
-		[Route("PostIngresoLogin")]
+        [HttpPost]
+        [Route("PostIngresoLogin")]
 
 		public async Task<IHttpActionResult> PostIngresoLogin(UUsers usuarioE)
 		{
