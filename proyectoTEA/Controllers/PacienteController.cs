@@ -55,14 +55,14 @@ namespace proyectoTEA.Controllers
 			}
 		}
 		[Route("obtenerPacientesEnlazados/{id}")]
-		[HttpGet]
+		[HttpPost]
 
-		public IHttpActionResult obtenerLosPacientesEnlados(int id)
+		public IHttpActionResult obtenerLosPacientesEnlados(int id, UPaciente tipoUsuario)
 		{
 			string message;
 			try
 			{
-				return Ok(new LPaciente().obtenerEstudiantesEnlazados(id));
+				return Ok(new LPaciente().obtenerEstudiantesEnlazados(id, tipoUsuario));
 			}
 			catch (Exception ex)
 			{
@@ -72,7 +72,6 @@ namespace proyectoTEA.Controllers
 		}
 		[Route("enlazarConEstudiante")]
 		[HttpPut]
-
 		public IHttpActionResult enlazarEstudianteConEstudiante(UPaciente datosAEnlazar)
 		{
 			string message;
@@ -87,5 +86,23 @@ namespace proyectoTEA.Controllers
 				return BadRequest(message);
 			}
 		}
+
+		[Route("eliminarEnlace")]
+		[HttpPut]
+		public IHttpActionResult eliminarEnlace(UPaciente datosParaElminarEnlace)
+		{
+			string message;
+			try
+			{
+				message = new LPaciente().eliminarEnlace(datosParaElminarEnlace);
+				return Ok(message);
+			}
+			catch (Exception ex)
+			{
+				message = "Hubo un error" + ex;
+				return BadRequest(message);
+			}
+		}
+
 	}
 }

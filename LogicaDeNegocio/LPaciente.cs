@@ -34,9 +34,9 @@ namespace LogicaDeNegocio
 			return new Datos.UserPaciente().obtenerPacientesPorEnlazar(id);
 		}
 
-		public List<UPaciente> obtenerEstudiantesEnlazados(int id)
+		public List<UPaciente> obtenerEstudiantesEnlazados(int id, UPaciente tipoUsuario)
 		{
-			return new Datos.UserPaciente().obtenerPacientesEnlazados(id);
+			return new Datos.UserPaciente().obtenerPacientesEnlazados(id, tipoUsuario);
 		}
 
 
@@ -51,6 +51,12 @@ namespace LogicaDeNegocio
 				new Datos.UserPaciente().enlazarAcudienteConEstudiante(datosAenlazar);
 			}
 			return "Se enlazo con exito";
+		}
+
+		public string eliminarEnlace(UPaciente datosAenlazar)
+		{
+			new Datos.UserPaciente().eliminarEnlace(datosAenlazar);
+			return "Se elimino el enlace con exito";
 		}
 
 	}

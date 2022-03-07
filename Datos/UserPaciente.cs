@@ -52,12 +52,12 @@ namespace Datos
             }
             //new Mapping().paciente.ToList()
         }
-        public List<UPaciente> obtenerPacientesEnlazados(int id)
+        public List<UPaciente> obtenerPacientesEnlazados(int id, UPaciente tipoUsuario)
         {
             using (var db = new Mapping())
             {
-                return id == 1 ? db.paciente.Where(x => x.Cedula_docente != null).ToList() :
-                    db.paciente.Where(x => x.Cedula_acudiente != null).ToList();
+                return id == 1 ? db.paciente.Where(x => x.Cedula_docente == tipoUsuario.Cedula_docente).ToList() :
+                    db.paciente.Where(x => x.Cedula_acudiente == tipoUsuario.Cedula_acudiente).ToList();
             }
             //new Mapping().paciente.ToList()
         }
@@ -84,5 +84,28 @@ namespace Datos
                 db.SaveChanges();
             }
         }
-    }
+		public void eliminarEnlace(UPaciente datos)
+		{
+			using (var db = new Mapping())
+			{
+				UPaciente pacienteADesenlazar = new UPaciente();
+				if (datos.Cedula_docente != null)
+				{
+					pacienteADesenlazar = db.paciente.Where(x => (x.Cedula_docente.Equals(datos.Cedula_docente)
+					&&(x.Numero_documento.Equals(datos.Numero_documento)))).FirstOrDefault();
+					pacienteADesenlazar.Cedula_docente = null;
+				}
+				else if(datos.Cedula_acudiente != null)
+				{
+					pacienteADesenlazar = db.paciente.Where(x => (x.Cedula_acudiente.Equals(datos.Cedula_acudiente)
+					&& (x.Numero_documento.Equals(datos.Numero_documento)))).FirstOrDefault();
+					pacienteADesenlazar.Cedula_acudiente = null;
+				}
+
+				var entry = db.Entry(pacienteADesenlazar);
+				entry.State = EntityState.Modified;
+				db.SaveChanges();
+			}
+		}
+	}
 }
