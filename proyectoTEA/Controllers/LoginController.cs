@@ -34,7 +34,7 @@ namespace proyectoTEA.Controllers
                 }
                 else
                 {
-					usuarioE.Rol_usuario_id = wp.WraperUsuario.Rol_usuario_id;
+					usuarioE.Rol_id = wp.WraperUsuario.Rol_id;
 					wp.Token = TokenGenerator.GenerateTokenJwt(usuarioE);
 					return Ok(wp);
 				}
@@ -53,7 +53,7 @@ namespace proyectoTEA.Controllers
             try
             {
                 UUsers datos = new UUsers();
-                datos.Numero_documento = usuario["usuario"].ToString();
+                datos.Documento = usuario["usuario"].ToString();
                 return Ok(new LIngresoLogin().cerrarsession(datos));
             }
             catch (Exception ex)

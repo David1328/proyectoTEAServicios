@@ -14,9 +14,9 @@ namespace Utilitarios
 	{
 
 		private int acudiente_id;
-		private String nombre_acudiente;
-		private String apellido_acudiente;
-		private String cedula;
+		private String nombre;
+		private String apellido;
+		private String documento;
 		private String correo;
 		private String clave;
 
@@ -25,11 +25,11 @@ namespace Utilitarios
 		[Column("id_acudiente")]
 		public int Acudiente_id { get => acudiente_id; set => acudiente_id = value; }
 		[Column("nombre_acudiente")]
-		public string Nombre_acudiente { get => nombre_acudiente; set => nombre_acudiente = value; }
+		public string Nombre { get => nombre; set => nombre = value; }
 		[Column("apellido_acudiente")]
-		public string Apellido_acudiente { get => apellido_acudiente; set => apellido_acudiente = value; }
+		public string Apellido { get => apellido; set => apellido = value; }
 		[Column("cedula")]
-		public string Cedula { get => cedula; set => cedula = value; }
+		public string Documento { get => documento; set => documento = value; }
 		[Column("correo")]
 		public string Correo { get => correo; set => correo = value; }
 

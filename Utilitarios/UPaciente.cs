@@ -13,13 +13,13 @@ namespace Utilitarios
 	public class UPaciente
 	{
 		private int paciente_id;
-		private String nombre_paciente;
-		private String apellido_paciente;
-		private String numero_documento;
+		private String nombre;
+		private String apellido;
+		private String documento;
 		private int grado_autismo;
 		private int edad;
-		private String cedula_docente;
-		private String cedula_acudiente;
+		private String documento_docente;
+		private String documento_acudiente;
 		private int institucion_id;
 		private String clave;
 
@@ -28,19 +28,19 @@ namespace Utilitarios
 		[Column("id_paciente")]
 		public int Paciente_id { get => paciente_id; set => paciente_id = value; }
 		[Column("nombre_paciente")]
-		public string Nombre_paciente { get => nombre_paciente; set => nombre_paciente = value; }
+		public string Nombre { get => nombre; set => nombre = value; }
 		[Column("apellido_paciente")]
-		public string Apellido_paciente { get => apellido_paciente; set => apellido_paciente = value; }
+		public string Apellido { get => apellido; set => apellido = value; }
 		[Column("numero_documento")]
-		public string Numero_documento { get => numero_documento; set => numero_documento = value; }
+		public string Documento { get => documento; set => documento = value; }
 		[Column("grado_autismo")]
 		public int Grado_autismo { get => grado_autismo; set => grado_autismo = value; }
 		[Column("edad")]
 		public int Edad { get => edad; set => edad = value; }
 		[Column("cedula_docente")]
-		public string Cedula_docente { get => cedula_docente; set => cedula_docente = value; }
+		public string Documento_docente { get => documento_docente; set => documento_docente = value; }
 		[Column("cedula_acudiente")]
-		public string Cedula_acudiente { get => cedula_acudiente; set => cedula_acudiente = value; }
+		public string Documento_acudiente { get => documento_acudiente; set => documento_acudiente = value; }
 		[Column("id_institucion")]
 		public int Institucion_id { get => institucion_id; set => institucion_id = value; }
 

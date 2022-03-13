@@ -9,9 +9,9 @@ namespace Utilitarios
 	public class UDocente
 	{
 		private int docente_id;
-		private String cedula;
-		private String nombre_docente;
-		private String apellido_docente;
+		private String documento;
+		private String nombre;
+		private String apellido;
 		private String nit;
 		private int institucion_id;
 		private String numero_documento_paciente;
@@ -22,11 +22,11 @@ namespace Utilitarios
 		[Column("id_docente")]
 		public int Docente_id { get => docente_id; set => docente_id = value; }
 		[Column("cedula")]
-		public string Cedula { get => cedula; set => cedula = value; }
+		public string Documento { get => documento; set => documento = value; }
 		[Column("nombre_docente")]
-		public string Nombre_docente { get => nombre_docente; set => nombre_docente = value; }
+		public string Nombre { get => nombre; set => nombre = value; }
 		[Column("apellido_docente")]
-		public string Apellido_docente { get => apellido_docente; set => apellido_docente = value; }
+		public string Apellido { get => apellido; set => apellido = value; }
 		[Column("nit")]
 		public string Nit { get => nit; set => nit = value; }
 		[Column("id_institucion")]

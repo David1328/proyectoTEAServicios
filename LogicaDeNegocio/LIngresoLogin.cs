@@ -62,7 +62,7 @@ namespace LogicaDeNegocio
             try
             {
                 UUsers datos = new UsersLogin().datosUsuarioSegunDocumento(session);
-                new Seguridad().cerrarAcceso(datos.Usuario_id);
+                new Seguridad().cerrarAcceso(datos.Id);
                 new Seguridad().borrarTokenLogin(datos);
 
                 string url = "redireccionar";

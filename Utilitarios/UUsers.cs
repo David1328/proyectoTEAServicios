@@ -8,21 +8,21 @@ namespace Utilitarios
 	[Table("usuario", Schema = "usuarios")]
 	public class UUsers
 	{
-		private int usuario_id;
-		private String numero_documento;
-		private String clave_usuario;
-		private int rol_usuario_id;
+		private int id;
+		private String documento;
+		private String clave;
+		private int rol_id;
 		private String sesion;
 
 		[Key]
 		[Column("id_usuario")]
-		public int Usuario_id { get => usuario_id; set => usuario_id = value; }
+		public int Id { get => id; set => id = value; }
 		[Column("numero_documento")]
-		public string Numero_documento { get => numero_documento; set => numero_documento = value; }
+		public string Documento { get => documento; set => documento = value; }
 		[Column("clave_usuario")]
-		public string Clave_usuario { get => clave_usuario; set => clave_usuario = value; }
+		public string Clave { get => clave; set => clave = value; }
 		[Column("tipo_usuario_id")]
-		public int Rol_usuario_id { get => rol_usuario_id; set => rol_usuario_id = value; }
+		public int Rol_id { get => rol_id; set => rol_id = value; }
 
 		[NotMapped]
 		public string Sesion { get => sesion; set => sesion = value; }

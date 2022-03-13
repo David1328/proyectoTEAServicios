@@ -15,9 +15,9 @@ namespace LogicaDeNegocio
 				Wraper wraper = new Wraper();
 				//Objeto la tabla usuario
 				UUsers nuevoUsuario = new UUsers();
-				nuevoUsuario.Numero_documento = nuevoAcudiente.Cedula;
-				nuevoUsuario.Clave_usuario = nuevoAcudiente.Clave;
-				nuevoUsuario.Rol_usuario_id = 2;
+				nuevoUsuario.Documento = nuevoAcudiente.Documento;
+				nuevoUsuario.Clave = nuevoAcudiente.Clave;
+				nuevoUsuario.Rol_id = 2;
 				//Validaciones para la creacion de los objetos
 				if ((new Datos.UsersRegister().verificarExistenciaDeCedulaRespectoIdRol(nuevoUsuario)) == null && !(new Datos.UsersRegister().revisarExistenciaDeCorreo(nuevoAcudiente.Correo)))
 				{
@@ -43,9 +43,9 @@ namespace LogicaDeNegocio
 				Wraper wraper = new Wraper();
 				//Objeto la tabla usuario
 				UUsers nuevoUsuario = new UUsers();
-				nuevoUsuario.Numero_documento = nuevoDocente.Cedula;
-				nuevoUsuario.Clave_usuario = nuevoDocente.Clave;
-				nuevoUsuario.Rol_usuario_id = 1;
+				nuevoUsuario.Documento = nuevoDocente.Documento;
+				nuevoUsuario.Clave = nuevoDocente.Clave;
+				nuevoUsuario.Rol_id = 1;
 				//Validaciones para la creacion de los objetos
 				if ((new Datos.UsersRegister().verificarExistenciaDeCedulaRespectoIdRol(nuevoUsuario)) == null && !(new Datos.UsersRegister().revisarExistenciaDeCorreo(nuevoDocente.Correo)))
 				{
@@ -70,15 +70,15 @@ namespace LogicaDeNegocio
 				Wraper wraper = new Wraper();
 				//Objeto la tabla usuario
 				UUsers nuevoUsuario = new UUsers();
-				nuevoUsuario.Numero_documento = nuevoPaciente.Numero_documento;
-				nuevoUsuario.Clave_usuario = nuevoPaciente.Clave;
-				nuevoUsuario.Rol_usuario_id = 3;
+				nuevoUsuario.Documento = nuevoPaciente.Documento;
+				nuevoUsuario.Clave = nuevoPaciente.Clave;
+				nuevoUsuario.Rol_id = 3;
 				UsersRegister buscar = new UsersRegister();
 				//Validaciones para la creacion de los objetos
 				if ((new Datos.UsersRegister().verificarExistenciaDocumentoPaciente(nuevoUsuario)) == null)
 				{
 					//(nuevoPaciente.Cedula_acudiente != null && (buscar.AcudienteODocenteExistente(nuevoPaciente.Cedula_acudiente,2)) != null) 
-					if (nuevoPaciente.Cedula_docente != null && (buscar.AcudienteODocenteExistente(nuevoPaciente.Cedula_docente, 1)) != null)
+					if (nuevoPaciente.Documento_docente != null && (buscar.AcudienteODocenteExistente(nuevoPaciente.Documento_docente, 1)) != null)
 					{
 						new Datos.UsersRegister().agregarUsuario(nuevoUsuario);
 						new Datos.UsersRegister().agregarPaciente(nuevoPaciente);
@@ -104,7 +104,7 @@ namespace LogicaDeNegocio
         {
 			UUsers usuario = new UUsers();
 			UAcudiente acudiente = new UAcudiente();
-			usuario.Numero_documento = cedulaE;
+			usuario.Documento = cedulaE;
 
 			usuario = new Datos.UsersLogin().verificarExistenciaUsuario(usuario);
 
@@ -124,7 +124,7 @@ namespace LogicaDeNegocio
 		{
 			UUsers usuario = new UUsers();
 			UDocente acudiente = new UDocente();
-			usuario.Numero_documento = cedulaE;
+			usuario.Documento = cedulaE;
 
 			usuario = new Datos.UsersLogin().verificarExistenciaUsuario(usuario);
 
@@ -144,7 +144,7 @@ namespace LogicaDeNegocio
 		{
 			UUsers usuario = new UUsers();
 			UPaciente acudiente = new UPaciente();
-			usuario.Numero_documento = cedulaE;
+			usuario.Documento = cedulaE;
 
 			usuario = new Datos.UsersLogin().verificarExistenciaUsuario(usuario);
 

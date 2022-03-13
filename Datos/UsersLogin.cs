@@ -12,39 +12,39 @@ namespace Datos
 
         public UUsers verificarExistenciaUsuario(UUsers usuarioE)
         {
-            return new Mapping().user.Where(x => (x.Numero_documento.Equals(usuarioE.Numero_documento))).FirstOrDefault();
+            return new Mapping().user.Where(x => (x.Documento.Equals(usuarioE.Documento))).FirstOrDefault();
         }
         public UUsers verificarLogin(UUsers usuarioE)
         {
 
-            return new Mapping().user.Where(x => (x.Numero_documento.Equals(usuarioE.Numero_documento)) && (x.Clave_usuario.Equals(usuarioE.Clave_usuario))).FirstOrDefault();
+            return new Mapping().user.Where(x => (x.Documento.Equals(usuarioE.Documento)) && (x.Clave.Equals(usuarioE.Clave))).FirstOrDefault();
         }
 
         public UUsers datosUsuarioSegunDocumento(UUsers usuarioE)
         {
             UUsers usuario = new UUsers();
-            usuario = new Mapping().user.Where(x => (x.Numero_documento.Equals(usuarioE.Numero_documento))).FirstOrDefault();
+            usuario = new Mapping().user.Where(x => (x.Documento.Equals(usuarioE.Documento))).FirstOrDefault();
             return usuario;
         }
 
         public async Task<UAcudiente> datosAcudienteUsuarioSegunDocumento(string cedulaE)
         {
             UAcudiente acudiente = new UAcudiente();
-            acudiente = new Mapping().acudiente.Where(x => x.Cedula.Equals(cedulaE)).FirstOrDefault();
+            acudiente = new Mapping().acudiente.Where(x => x.Documento.Equals(cedulaE)).FirstOrDefault();
             return acudiente;
         }
 
         public async Task<UPaciente> datosPacienteSegunDocumento(string cedulaE)
         {
             UPaciente usuario = new UPaciente();
-            usuario = new Mapping().paciente.Where(x => (x.Numero_documento.Equals(cedulaE))).FirstOrDefault();
+            usuario = new Mapping().paciente.Where(x => (x.Documento.Equals(cedulaE))).FirstOrDefault();
             return usuario;
         }
 
         public async Task<UDocente> datosDocenteUsuarioSegunDocumento(string cedulaE)
         {
             UDocente usuario = new UDocente();
-            usuario = new Mapping().docente.Where(x => (x.Cedula.Equals(cedulaE))).FirstOrDefault();
+            usuario = new Mapping().docente.Where(x => (x.Documento.Equals(cedulaE))).FirstOrDefault();
             return usuario;
         }
 

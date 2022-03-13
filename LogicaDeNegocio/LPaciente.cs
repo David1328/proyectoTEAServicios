@@ -10,7 +10,7 @@ namespace LogicaDeNegocio
 		public String enlazarDocentePaciente(UDocente docente)
 		{
 			//Condicional para verifcar si el niño ya tiene un docente
-			if (new Datos.UsersRegister().AcudienteODocenteExistente(docente.Cedula, 1) != null && new Datos.UserPaciente().verificarExistenciaDocenteEnlazar(docente).Cedula_docente == null
+			if (new Datos.UsersRegister().AcudienteODocenteExistente(docente.Documento, 1) != null && new Datos.UserPaciente().verificarExistenciaDocenteEnlazar(docente).Documento_docente == null
 				)
 			{
 				if (new Datos.UserPaciente().verificarDocentePacienteMismaInstitucion(docente))
@@ -42,11 +42,11 @@ namespace LogicaDeNegocio
 
 		public string enlazarConEstudiante(UPaciente datosAenlazar)
 		{
-			if (datosAenlazar.Cedula_docente != null)
+			if (datosAenlazar.Documento_docente != null)
 			{
 				new Datos.UserPaciente().enlazarDocenteConEstudiante(datosAenlazar);
 
-			}else if (datosAenlazar.Cedula_acudiente != null)
+			}else if (datosAenlazar.Documento_acudiente != null)
 			{
 				new Datos.UserPaciente().enlazarAcudienteConEstudiante(datosAenlazar);
 			}

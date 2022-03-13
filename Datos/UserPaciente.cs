@@ -11,12 +11,12 @@ namespace Datos
 
         public UPaciente verificarExistenciaDocenteEnlazar(UDocente docenteAEnlazar)
         {
-            return new Mapping().paciente.Where(x => (x.Numero_documento.Equals(docenteAEnlazar.Numero_documento_paciente))).FirstOrDefault();
+            return new Mapping().paciente.Where(x => (x.Documento.Equals(docenteAEnlazar.Numero_documento_paciente))).FirstOrDefault();
         }
 
         public bool verificarDocentePacienteMismaInstitucion(UDocente docenteAEnlazar)
         {
-            UPaciente paciente = new Mapping().paciente.Where(x => (x.Numero_documento.Equals(docenteAEnlazar.Numero_documento_paciente))).FirstOrDefault();
+            UPaciente paciente = new Mapping().paciente.Where(x => (x.Documento.Equals(docenteAEnlazar.Numero_documento_paciente))).FirstOrDefault();
             if (paciente.Institucion_id.Equals(docenteAEnlazar.Institucion_id))
             {
                 return true;
@@ -31,9 +31,9 @@ namespace Datos
         {
             using (var db = new Mapping())
             {
-                UPaciente pacienteAEnlazar = db.paciente.Where(x => (x.Numero_documento.Equals(docenteAEnlazar.Numero_documento_paciente))).FirstOrDefault();
+                UPaciente pacienteAEnlazar = db.paciente.Where(x => (x.Documento.Equals(docenteAEnlazar.Numero_documento_paciente))).FirstOrDefault();
 
-                pacienteAEnlazar.Cedula_docente = docenteAEnlazar.Cedula;
+                pacienteAEnlazar.Documento_docente = docenteAEnlazar.Documento;
 
                 var entry = db.Entry(pacienteAEnlazar);
                 entry.State = EntityState.Modified;
@@ -47,8 +47,8 @@ namespace Datos
         {
             using (var db = new Mapping())
             {
-                return id == 1 ? db.paciente.Where(x => x.Cedula_docente.Equals(null)).ToList() :
-                    db.paciente.Where(x => x.Cedula_acudiente.Equals(null)).ToList();
+                return id == 1 ? db.paciente.Where(x => x.Documento_docente.Equals(null)).ToList() :
+                    db.paciente.Where(x => x.Documento_acudiente.Equals(null)).ToList();
             }
             //new Mapping().paciente.ToList()
         }
@@ -56,8 +56,8 @@ namespace Datos
         {
             using (var db = new Mapping())
             {
-                return id == 1 ? db.paciente.Where(x => x.Cedula_docente == tipoUsuario.Cedula_docente).ToList() :
-                    db.paciente.Where(x => x.Cedula_acudiente == tipoUsuario.Cedula_acudiente).ToList();
+                return id == 1 ? db.paciente.Where(x => x.Documento_docente == tipoUsuario.Documento_docente).ToList() :
+                    db.paciente.Where(x => x.Documento_acudiente == tipoUsuario.Documento_acudiente).ToList();
             }
             //new Mapping().paciente.ToList()
         }
@@ -65,8 +65,8 @@ namespace Datos
         {
             using (var db = new Mapping())
             {
-                UPaciente pacienteAEnlazar = db.paciente.Where(x => x.Numero_documento.Equals(datos.Numero_documento)).FirstOrDefault();
-                pacienteAEnlazar.Cedula_docente = datos.Cedula_docente;
+                UPaciente pacienteAEnlazar = db.paciente.Where(x => x.Documento.Equals(datos.Documento)).FirstOrDefault();
+                pacienteAEnlazar.Documento_docente = datos.Documento_docente;
                 var entry = db.Entry(pacienteAEnlazar);
                 entry.State = EntityState.Modified;
                 db.SaveChanges();
@@ -77,8 +77,8 @@ namespace Datos
         {
             using (var db = new Mapping())
             {
-                UPaciente pacienteAEnlazar = db.paciente.Where(x => x.Numero_documento.Equals(datos.Numero_documento)).FirstOrDefault();
-                pacienteAEnlazar.Cedula_acudiente = datos.Cedula_acudiente;
+                UPaciente pacienteAEnlazar = db.paciente.Where(x => x.Documento.Equals(datos.Documento)).FirstOrDefault();
+                pacienteAEnlazar.Documento_acudiente = datos.Documento_acudiente;
                 var entry = db.Entry(pacienteAEnlazar);
                 entry.State = EntityState.Modified;
                 db.SaveChanges();
@@ -89,17 +89,17 @@ namespace Datos
 			using (var db = new Mapping())
 			{
 				UPaciente pacienteADesenlazar = new UPaciente();
-				if (datos.Cedula_docente != null)
+				if (datos.Documento_docente != null)
 				{
-					pacienteADesenlazar = db.paciente.Where(x => (x.Cedula_docente.Equals(datos.Cedula_docente)
-					&&(x.Numero_documento.Equals(datos.Numero_documento)))).FirstOrDefault();
-					pacienteADesenlazar.Cedula_docente = null;
+					pacienteADesenlazar = db.paciente.Where(x => (x.Documento_docente.Equals(datos.Documento_docente)
+					&&(x.Documento.Equals(datos.Documento)))).FirstOrDefault();
+					pacienteADesenlazar.Documento_docente = null;
 				}
-				else if(datos.Cedula_acudiente != null)
+				else if(datos.Documento_acudiente != null)
 				{
-					pacienteADesenlazar = db.paciente.Where(x => (x.Cedula_acudiente.Equals(datos.Cedula_acudiente)
-					&& (x.Numero_documento.Equals(datos.Numero_documento)))).FirstOrDefault();
-					pacienteADesenlazar.Cedula_acudiente = null;
+					pacienteADesenlazar = db.paciente.Where(x => (x.Documento_acudiente.Equals(datos.Documento_acudiente)
+					&& (x.Documento.Equals(datos.Documento)))).FirstOrDefault();
+					pacienteADesenlazar.Documento_acudiente = null;
 				}
 
 				var entry = db.Entry(pacienteADesenlazar);

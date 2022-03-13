@@ -47,7 +47,7 @@ namespace Datos
         {
             using (var db = new Mapping())
             {
-                LoginToken usuario = db.login_token.Where(x => x.User_id == idUsuario.Usuario_id).First();
+                LoginToken usuario = db.login_token.Where(x => x.User_id == idUsuario.Id).First();
                 db.login_token.Remove(usuario);
                 db.SaveChanges();
             }

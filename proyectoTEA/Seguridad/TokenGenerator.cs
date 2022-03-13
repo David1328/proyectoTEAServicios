@@ -26,8 +26,8 @@ namespace proyectoTEA.Seguridad
 
                 // create a claimsIdentity 
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
-                new Claim("Usuario", user.Numero_documento),
-                new Claim("Rol", user.Rol_usuario_id.ToString())
+                new Claim("Usuario", user.Documento),
+                new Claim("Rol", user.Rol_id.ToString())
 
             });
 
@@ -46,7 +46,7 @@ namespace proyectoTEA.Seguridad
                 LoginToken token = new LoginToken();
                 token.FechaGenerado = DateTime.Now;
                 token.FechaVigencia = DateTime.Now.AddMinutes(15);
-                token.User_id = user.Usuario_id;
+                token.User_id = user.Id;
                 token.Token = jwtTokenString;
                 new LIngresoLogin().guardarToken(token);
                 return jwtTokenString;
