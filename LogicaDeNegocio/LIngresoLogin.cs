@@ -34,12 +34,14 @@ namespace LogicaDeNegocio
                         else
                         {
                             UAcceso acceso = new UAcceso();
-                            acceso.Fecha_inicioSesion = DateTime.Now;
-                            acceso.Sesion = usuarioE.Sesion;
-                            new Datos.UsersLogin().agregarAcceso(acceso);
                             wraper.Mensaje = "redireccionar a pagina perfil o inicio";
                             wraper.WraperUsuario = new Datos.UsersLogin().datosUsuarioSegunDocumento(usuarioE);
-                            return wraper;
+                            acceso.Fecha_inicioSesion = DateTime.Now;
+                            acceso.Sesion = usuarioE.Sesion;
+                            acceso.Fecha_finSesion = null;
+                            acceso.Id_usuario = wraper.WraperUsuario.Id;
+                            new Datos.UsersLogin().agregarAcceso(acceso);
+                        return wraper;
                         }
                     }
                 
@@ -68,9 +70,9 @@ namespace LogicaDeNegocio
                 string url = "redireccionar";
                 return url;
             }
-            catch
+            catch(Exception ex)
             {
-                string errorMjs = "Usuario Inexistente";
+                string errorMjs = "Usuario Inexistente" + ex;
                 return errorMjs;
             }
 
