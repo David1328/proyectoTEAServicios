@@ -32,7 +32,7 @@ namespace Datos
             using (var db = new Mapping())
             {
                 UAcceso acceso = new UAcceso();
-                acceso = db.acceso.Where(x => x.Id_acceso == userid && x.Fecha_finSesion == null).FirstOrDefault();
+                acceso = db.acceso.Where(x => x.Id_usuario == userid && x.Fecha_finSesion == null).FirstOrDefault();
                 acceso.Fecha_finSesion = DateTime.Now;
 
                 db.acceso.Attach(acceso);
