@@ -13,6 +13,7 @@ public class Mapping : DbContext
 	public DbSet<UPaciente> paciente { get; set; }
 	public DbSet<URol> rol { get; set; }
 	public DbSet<UAcceso> acceso { get; set; }
+	public DbSet<UTipoActividad> uTipoActividads { get; set; }
 
 	/*token */
 	public DbSet<LoginToken> login_token { get; set; }

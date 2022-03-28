@@ -1,11 +1,8 @@
 ﻿using LogicaDeNegocio;
-using Newtonsoft.Json.Linq;
 using proyectoTEA.Seguridad;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Utilitarios;

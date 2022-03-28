@@ -107,5 +107,15 @@ namespace Datos
 				db.SaveChanges();
 			}
 		}
+
+		public UPaciente datosPaciente(string paciente_documento)
+		{
+			using (var db = new Mapping())
+			{
+				return db.paciente.Where(x => x.Documento.Equals(paciente_documento)).FirstOrDefault();
+			}
+		}
+
+
 	}
 }

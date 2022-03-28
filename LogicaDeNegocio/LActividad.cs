@@ -40,5 +40,12 @@ namespace LogicaDeNegocio
                 return wp;
             }
         }
-    }
+
+		public string eliminarActividad(int id_actividad)
+		{
+			new Datos.Actividad().eliminarActividad(id_actividad);
+			return "Actividad eliminada";
+		}
+
+	}
 }

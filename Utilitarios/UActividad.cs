@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Utilitarios
 {
@@ -13,21 +8,31 @@ namespace Utilitarios
     public class UActividad
     {
         private int id_actividad;
-        private string titulo;
+        private string nombreActividad;
         private string descripcion;
         private string docente_creador;
+		private string contenido_actividad;
+		private int tipo_actividad;
+
+		private string tipo_actividad_texto;
 
         [Key]
         [Column("id_actividad")]
         public int Id_actividad { get => id_actividad; set => id_actividad = value; }
 
-        [Column("titulo")]
-        public string Titulo { get => titulo; set => titulo = value; }
+        [Column("nombre_actividad")]
+        public string NombreActividad { get => nombreActividad; set => nombreActividad = value; }
         [Column("descripcion")]
         public string Descripcion { get => descripcion; set => descripcion = value; }
-
         [Column("docente_creador")]
         public string Docente_creador { get => docente_creador; set => docente_creador = value; }
+		[Column("contenido_actividad")]
+		public string Contenido_actividad { get => contenido_actividad; set => contenido_actividad = value; }
+		[Column("tipo_actividad")]
+		public int Tipo_actividad { get => tipo_actividad; set => tipo_actividad = value; }
 
-    }
+
+		[NotMapped]
+		public string Tipo_actividad_texto { get => tipo_actividad_texto; set => tipo_actividad_texto = value; }
+	}
 }

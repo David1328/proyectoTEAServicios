@@ -58,6 +58,10 @@ namespace LogicaDeNegocio
 			new Datos.UserPaciente().eliminarEnlace(datosAenlazar);
 			return "Se elimino el enlace con exito";
 		}
+		public UPaciente datosPaciente(string documentoPaciente)
+		{
+			return new Datos.UserPaciente().datosPaciente(documentoPaciente);
+		}
 
 	}
 }

@@ -16,14 +16,14 @@ namespace proyectoTEA.Controllers
     public class ActividadController : ApiController
     {
         [HttpGet]
-        [Route("GetListaActividades")]
+        [Route("GetListaActividades/{idDocente}")]
         //  {"idDocente": "int"}
-        public IHttpActionResult PostCancelarMireserva([FromBody] JObject idDocente)
+        public IHttpActionResult getListaActividades(int idDocente)
         {
             UActividad actividad = new UActividad();
             try
             {
-                actividad.Docente_creador = idDocente["idDocente"].ToString();
+                actividad.Docente_creador = idDocente.ToString();
                 return Ok(new LActividad().listaActividadesDocente(actividad));
             }
             catch (Exception ex)
@@ -45,5 +45,22 @@ namespace proyectoTEA.Controllers
                 return BadRequest("surgio el siguente error: " + ex.Message.ToString());
             }
         }
-    }
+
+		[Route("DeleteActividad/{actividad_id}")]
+		[HttpDelete]
+		public IHttpActionResult DeleteActividad(string actividad_id)
+		{
+			string message;
+			try
+			{
+				message = new LActividad().eliminarActividad(int.Parse(actividad_id));
+				return Ok(message);
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
+
+	}
 }
