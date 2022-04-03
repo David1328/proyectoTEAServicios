@@ -15,7 +15,21 @@ namespace proyectoTEA.Controllers
     [RoutePrefix("api/actividades")]
     public class ActividadController : ApiController
     {
-        [HttpGet]
+		[HttpGet]
+		[Route("GetTypeActivity")]
+		public IHttpActionResult getTypeActivity()
+		{
+			try
+			{
+				return Ok(new LActividad().getTypeActivity());
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
+
+		[HttpGet]
         [Route("GetListaActividades/{idDocente}")]
         //  {"idDocente": "int"}
         public IHttpActionResult getListaActividades(int idDocente)
@@ -32,7 +46,22 @@ namespace proyectoTEA.Controllers
             }
         }
 
-        [HttpPost]
+		[HttpGet]
+		[Route("GetActivityPerId/{idActivity}")]
+		//  {"idDocente": "int"}
+		public IHttpActionResult getActivityPerId(int idActivity)
+		{
+			try
+			{
+				return Ok(new LActividad().getActivityId(idActivity));
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
+
+		[HttpPost]
         [Route("PostAgregarActividad")]
         public IHttpActionResult PostAgregarActividad(UActividad actividadE)
         {
@@ -46,6 +75,8 @@ namespace proyectoTEA.Controllers
             }
         }
 
+
+
 		[Route("DeleteActividad/{actividad_id}")]
 		[HttpDelete]
 		public IHttpActionResult DeleteActividad(string actividad_id)
@@ -54,6 +85,22 @@ namespace proyectoTEA.Controllers
 			try
 			{
 				message = new LActividad().eliminarActividad(int.Parse(actividad_id));
+				return Ok(message);
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
+
+		[Route("PutActividadEstudiante")]
+		[HttpPut]
+		public IHttpActionResult PutActividadEstudiante(UActividad uActividad)
+		{
+			string message;
+			try
+			{
+				message = new LActividad().putActividadEstudiante(uActividad);
 				return Ok(message);
 			}
 			catch (Exception ex)

@@ -133,18 +133,18 @@ namespace proyectoTEA.Controllers
 			}
 		}
 
-		
-		[Route("GetDatosPaciente")]
+
+		[Route("datosPaciente/{documentoPaciente}")]
 		[HttpGet]
-		public async Task<IHttpActionResult> GetDatosPaciente(string cedulaE)
+		public async Task<IHttpActionResult> datosPaciente(string documentoPaciente)
 		{
-			UPaciente acudiente = new UPaciente();
+			UPaciente paciente = new UPaciente();
 
 			try
 			{
-				acudiente = await new LUserRegistercs().obtenerDatosPaciente(cedulaE);
+				paciente = await new LUserRegistercs().obtenerDatosPaciente(documentoPaciente);
 
-				return Ok(acudiente);
+				return Ok(paciente);
 			}
 			catch (Exception ex)
 			{

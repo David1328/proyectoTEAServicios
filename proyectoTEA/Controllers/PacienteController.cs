@@ -103,23 +103,5 @@ namespace proyectoTEA.Controllers
 				return BadRequest(message);
 			}
 		}
-
-		[Route("datosPaciente/{documentoPaciente}")]
-		[HttpGet]
-
-		public IHttpActionResult datosPaciente(string documentoPaciente)
-		{
-			string message;
-			try
-			{
-				return Ok(new LPaciente().datosPaciente(documentoPaciente));
-			}
-			catch (Exception ex)
-			{
-				message = "Hubo un error" + ex;
-				return BadRequest(message);
-			}
-		}
-
 	}
 }

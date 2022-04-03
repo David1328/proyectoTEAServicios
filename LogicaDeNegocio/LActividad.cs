@@ -13,6 +13,10 @@ namespace LogicaDeNegocio
         {
             return new Datos.Actividad().listaActividadesDocente(idDocente);
         }
+		public UActividad getActivityId(int id_activity)
+		{
+			return new Datos.Actividad().getActivityId(id_activity);
+		}
 
         public Wraper agregarActividad(UActividad actividadE)
         {
@@ -45,6 +49,16 @@ namespace LogicaDeNegocio
 		{
 			new Datos.Actividad().eliminarActividad(id_actividad);
 			return "Actividad eliminada";
+		}
+
+		public List<UTipoActividad> getTypeActivity()
+		{
+			return new Datos.Actividad().getTypeActivity();
+		}
+
+		public string putActividadEstudiante(UActividad actividadRealizada)
+		{
+			return new Datos.Actividad().putActividad(actividadRealizada);
 		}
 
 	}

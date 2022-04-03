@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Utilitarios;
 
@@ -60,7 +62,56 @@ namespace Datos
 				db.SaveChanges();
 
 			}
-
 		}
-    }
+
+
+		public UActividad getActivityId(int activity_id)
+		{
+			using (var db = new Mapping())
+			{
+
+				return db.actividad.Where(x => x.Id_actividad.Equals(activity_id)).FirstOrDefault();
+
+			}
+		}
+
+		public List<UTipoActividad> getTypeActivity()
+		{
+			return new Mapping().uTipoActividads.ToList();
+		}
+
+
+		public string putActividad(UActividad actividadHecha)
+		{
+			using (var db = new Mapping())
+			{
+				UActividad actividadActualizar = db.actividad.Where(x => x.Id_actividad.Equals(actividadHecha.Id_actividad)).FirstOrDefault();
+				if (actividadActualizar.EstudiantesHicieronActividad != null)
+				{
+
+
+					List<PacienteScoreJSon> pacientesEnLaActividad = JsonConvert.DeserializeObject<List<PacienteScoreJSon>>(actividadActualizar.EstudiantesHicieronActividad);
+					pacientesEnLaActividad.Add(actividadHecha.NuevoEstudiante);
+
+					actividadActualizar.EstudiantesHicieronActividad = JsonConvert.SerializeObject(pacientesEnLaActividad, Formatting.Indented, new JsonSerializerSettings
+					{
+						NullValueHandling = NullValueHandling.Ignore
+					});
+				}
+				else
+				{
+					List<PacienteScoreJSon> pacientesEnLaActividad = new List<PacienteScoreJSon>();
+					pacientesEnLaActividad.Add(actividadHecha.NuevoEstudiante);
+					actividadActualizar.EstudiantesHicieronActividad = JsonConvert.SerializeObject(pacientesEnLaActividad, Formatting.Indented, new JsonSerializerSettings
+					{
+						NullValueHandling = NullValueHandling.Ignore
+					});
+				}
+				var enty = db.Entry(actividadActualizar);
+				enty.State = EntityState.Modified;
+				db.SaveChanges();
+				return "Se guardo el estudiante dentro de la actividad";
+			}
+		}
+	}
 }

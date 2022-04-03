@@ -13,7 +13,8 @@ namespace Utilitarios
         private string docente_creador;
 		private string contenido_actividad;
 		private int tipo_actividad;
-
+		private string estudiantesHicieronActividad;
+		private PacienteScoreJSon nuevoEstudiante;
 		private string tipo_actividad_texto;
 
         [Key]
@@ -30,9 +31,13 @@ namespace Utilitarios
 		public string Contenido_actividad { get => contenido_actividad; set => contenido_actividad = value; }
 		[Column("tipo_actividad")]
 		public int Tipo_actividad { get => tipo_actividad; set => tipo_actividad = value; }
+		[Column("estudiantes")]
+		public string EstudiantesHicieronActividad { get => estudiantesHicieronActividad; set => estudiantesHicieronActividad = value; }
 
 
 		[NotMapped]
 		public string Tipo_actividad_texto { get => tipo_actividad_texto; set => tipo_actividad_texto = value; }
+		[NotMapped]
+		public PacienteScoreJSon NuevoEstudiante { get => nuevoEstudiante; set => nuevoEstudiante = value; }
 	}
 }
