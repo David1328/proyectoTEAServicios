@@ -116,6 +116,10 @@ namespace Datos
 			}
 		}
 
+		public UPaciente getPatientInformation(String id_card_attendant)
+		{
+			return new Mapping().paciente.Where(x => x.Documento_acudiente.Equals(id_card_attendant)).FirstOrDefault();
+		}
 
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Datos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +10,17 @@ namespace LogicaDeNegocio
 {
     public class LActividad
     {
-        public List<UActividad> listaActividadesDocente(UActividad idDocente)
+        public List<UActividad> listaActividades(int rol,string id_card)
         {
+			UActividad idDocente = new UActividad();
+			if (rol==2){
+				UPaciente pacientInformation = new UserPaciente().getPatientInformation(id_card);
+				idDocente.Docente_creador = pacientInformation.Documento_docente;
+			}
+			else
+			{
+				idDocente.Docente_creador = id_card;
+			}
             return new Datos.Actividad().listaActividadesDocente(idDocente);
         }
 		public UActividad getActivityId(int id_activity)
@@ -59,6 +69,17 @@ namespace LogicaDeNegocio
 		public string putActividadEstudiante(UActividad actividadRealizada)
 		{
 			return new Datos.Actividad().putActividad(actividadRealizada);
+		}
+
+		public List<UPaciente> getAcivitysDidByPatientForAttendant(int id_activity,string id_card_attendant)
+		{
+			UPaciente pacientInformation = new UserPaciente().getPatientInformation(id_card_attendant);
+			return new Actividad().getAcivitysDidByPatientForAttendant(id_activity,pacientInformation.Documento);
+		}
+
+		public List<UPaciente> getAcivitysDidByPatientForTeacher(int id_activity,string id_card_teacher)
+		{
+			return new Actividad().getAcivitysDidByPatientForTeacher(id_activity, id_card_teacher);
 		}
 
 	}

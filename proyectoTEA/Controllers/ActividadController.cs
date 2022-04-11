@@ -30,16 +30,17 @@ namespace proyectoTEA.Controllers
 		}
 
 		[HttpGet]
-        [Route("GetListaActividades/{idDocente}")]
+        [Route("GetListaActividades/{id_rol}/{id_card}")]
         //  {"idDocente": "int"}
-        public IHttpActionResult getListaActividades(int idDocente)
+        public IHttpActionResult getListaActividades(int id_rol, string id_card)
         {
-            UActividad actividad = new UActividad();
             try
             {
-                actividad.Docente_creador = idDocente.ToString();
-                return Ok(new LActividad().listaActividadesDocente(actividad));
+                return Ok(new LActividad().listaActividades(id_rol,id_card));
             }
+			catch (NullReferenceException ex){
+				return BadRequest("No tienes un estudiante Enlazado");
+			}
             catch (Exception ex)
             {
                 return BadRequest("surgio el siguente error: " + ex.Message.ToString());
@@ -102,6 +103,52 @@ namespace proyectoTEA.Controllers
 			{
 				message = new LActividad().putActividadEstudiante(uActividad);
 				return Ok(message);
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
+
+		[Route("GetAcivitysMakedByPatientForTeacher/{id_activity}/{id_card_teacher}")]
+		[HttpGet]
+		public IHttpActionResult GetAcivitysMakedByPatientForTeacher(int id_activity,string id_card_teacher)
+		{
+			try
+			{
+				List<UPaciente> respuesta = new LActividad().getAcivitysDidByPatientForTeacher(id_activity, id_card_teacher);
+				if (respuesta != null)
+				{
+					return Ok(respuesta);
+				}
+				else
+				{
+
+					return BadRequest("Tu estudiante no ha realizado esta actividad");
+				}
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
+
+		[Route("GetAcivitysMakedByPatientForAttendant/{id_activity}/{id_card_attendant}")]
+		[HttpGet]
+		public IHttpActionResult GetAcivitysMakedByPatientForAttendant(int id_activity,string id_card_attendant)
+		{
+			try
+			{
+
+				List<UPaciente> respuesta = new LActividad().getAcivitysDidByPatientForAttendant(id_activity, id_card_attendant);
+				if (respuesta!=null)
+				{
+					return Ok(respuesta);
+				}
+				else
+				{
+					return NotFound();
+				}
 			}
 			catch (Exception ex)
 			{

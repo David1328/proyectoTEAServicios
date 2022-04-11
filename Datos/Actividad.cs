@@ -113,5 +113,51 @@ namespace Datos
 				return "Se guardo el estudiante dentro de la actividad";
 			}
 		}
+
+
+		public List<UPaciente> getAcivitysDidByPatientForAttendant(int id_activity,String id_card_patient)
+		{
+			UActividad activityDid = new Mapping().actividad.Where(x => x.Id_actividad.Equals(id_activity)).FirstOrDefault();
+			List<PacienteScoreJSon> patientInTheActivity = new List<PacienteScoreJSon>();
+			List<UPaciente> pacient = new List<UPaciente>();
+			if (activityDid.EstudiantesHicieronActividad!=null)
+			{
+				patientInTheActivity =
+				JsonConvert.DeserializeObject<List<PacienteScoreJSon>>(activityDid.EstudiantesHicieronActividad);
+				patientInTheActivity = patientInTheActivity.Where(x => x.DocumentoPaciente.Equals(id_card_patient)).ToList();
+				pacient = patientInTheActivity != null ? new Mapping().paciente.Where(x => x.Documento == id_card_patient).ToList():
+					null;
+			}
+			else
+			{
+				pacient = null;
+			}
+			return pacient;
+		}
+
+		public List<UPaciente> getAcivitysDidByPatientForTeacher(int id_activity, string id_card_teacher)
+		{
+			UActividad activityDid = new Mapping().actividad.Where(x => x.Id_actividad.Equals(id_activity)).FirstOrDefault();
+			List<PacienteScoreJSon> patientInTheActivity = new List<PacienteScoreJSon>();
+			List<UPaciente> patientsDidActivity = new List<UPaciente>();
+			if (activityDid.EstudiantesHicieronActividad != null)
+			{
+				patientInTheActivity =
+				JsonConvert.DeserializeObject<List<PacienteScoreJSon>>(activityDid.EstudiantesHicieronActividad);
+				foreach(UPaciente patient in new Mapping().paciente.Where(x => x.Documento_docente.Equals(id_card_teacher)).ToList())
+				{
+					if (patientInTheActivity.Where(x=>x.DocumentoPaciente.Equals(patient.Documento)).FirstOrDefault()!=null)
+					{
+						patientsDidActivity.Add(patient);
+					}
+				}
+				
+			}
+			else
+			{
+				patientsDidActivity = null;
+			}
+			return patientsDidActivity;
+		}
 	}
 }
