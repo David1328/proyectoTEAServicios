@@ -20,5 +20,6 @@ public class Mapping : DbContext
 
 	/*actividad*/
 	public DbSet<UActividad> actividad { get; set; }
+	public DbSet<UEvaluacionInicial> actividadEvaluacionInicial { get; set; }
 
 }

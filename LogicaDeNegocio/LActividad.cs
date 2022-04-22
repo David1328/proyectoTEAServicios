@@ -82,5 +82,29 @@ namespace LogicaDeNegocio
 			return new Actividad().getAcivitysDidByPatientForTeacher(id_activity, id_card_teacher);
 		}
 
+		public List<UEvaluacionInicial> getListActivitysToInicialEvaluation(int identificador)
+        {
+			Random random = new Random();
+
+			int[] activities = new int[3];
+			int randomnum;
+			bool exist;
+			for (int i = 0; i < 3; i++)
+            {
+				randomnum = random.Next(1, 4);
+				exist = Array.Exists(activities, x => x == randomnum);
+                while (exist)
+                {
+					randomnum = random.Next(randomnum + 1, 5);
+					exist = Array.Exists(activities, x => x == randomnum);
+				}
+				if (exist==false)
+                {
+					activities[i] = randomnum;
+				}
+            }
+			return new Actividad().getListActivitysToInicialEvaluation(activities, identificador);
+        }
+
 	}
 }

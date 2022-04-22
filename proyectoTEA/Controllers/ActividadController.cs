@@ -156,5 +156,31 @@ namespace proyectoTEA.Controllers
 			}
 		}
 
+		[Route("GetEvaluacionInicialCiencias")]
+		[HttpGet]
+		public IHttpActionResult GetEvaluacionInicialCiencias()
+		{
+			List<UEvaluacionInicial> respuesta = new LActividad().getListActivitysToInicialEvaluation(1);
+			return Ok(respuesta);
+		}
+
+
+		[Route("GetEvaluacionInicialMatematicas")]
+		[HttpGet]
+		public IHttpActionResult GetEvaluacionInicialMatematicas()
+		{
+			List<UEvaluacionInicial> respuesta = new LActividad().getListActivitysToInicialEvaluation(2);
+			return Ok(respuesta);
+		}
+		//GetEvaluacionInicialComunicacion
+
+		[Route("GetEvaluacionInicialComunicacion")]
+		[HttpGet]
+		public IHttpActionResult GetEvaluacionInicialComunicacion()
+		{
+			List<UEvaluacionInicial> respuesta = new LActividad().getListActivitysToInicialEvaluation(3);
+			return Ok(respuesta);
+		}
+
 	}
 }
