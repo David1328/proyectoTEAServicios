@@ -182,5 +182,13 @@ namespace proyectoTEA.Controllers
 			return Ok(respuesta);
 		}
 
+		[Route("GetEvaluacionInicialHabilidadesSociales")]
+		[HttpGet]
+		public IHttpActionResult GetEvaluacionInicialHabilidadesSociales()
+		{
+			List<UEvaluacionInicial> respuesta = new LActividad().getListActivitysToInicialEvaluation(4);
+			return Ok(respuesta);
+		}
+
 	}
 }

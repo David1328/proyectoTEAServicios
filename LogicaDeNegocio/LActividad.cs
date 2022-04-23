@@ -85,17 +85,16 @@ namespace LogicaDeNegocio
 		public List<UEvaluacionInicial> getListActivitysToInicialEvaluation(int identificador)
         {
 			Random random = new Random();
-
 			int[] activities = new int[3];
 			int randomnum;
 			bool exist;
 			for (int i = 0; i < 3; i++)
             {
-				randomnum = random.Next(1, 4);
+				randomnum = random.Next(1, 11);
 				exist = Array.Exists(activities, x => x == randomnum);
                 while (exist)
                 {
-					randomnum = random.Next(randomnum + 1, 5);
+					randomnum = random.Next(randomnum + 1, 12);
 					exist = Array.Exists(activities, x => x == randomnum);
 				}
 				if (exist==false)
