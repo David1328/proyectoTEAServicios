@@ -1,0 +1,14 @@
+﻿C:\Users\David\source\repos\proyectoTEA\Utilitarios\LoginToken.cs
+C:\Users\David\source\repos\proyectoTEA\Utilitarios\PacienteScoreJSon.cs
+C:\Users\David\source\repos\proyectoTEA\Utilitarios\Properties\AssemblyInfo.cs
+C:\Users\David\source\repos\proyectoTEA\Utilitarios\UAcceso.cs
+C:\Users\David\source\repos\proyectoTEA\Utilitarios\UActividad.cs
+C:\Users\David\source\repos\proyectoTEA\Utilitarios\UAcudiente.cs
+C:\Users\David\source\repos\proyectoTEA\Utilitarios\UDocente.cs
+C:\Users\David\source\repos\proyectoTEA\Utilitarios\UPaciente.cs
+C:\Users\David\source\repos\proyectoTEA\Utilitarios\URol.cs
+C:\Users\David\source\repos\proyectoTEA\Utilitarios\UTipoActividad.cs
+C:\Users\David\source\repos\proyectoTEA\Utilitarios\UUsers.cs
+C:\Users\David\source\repos\proyectoTEA\Utilitarios\Wraper.cs
+C:\Users\David\source\repos\proyectoTEA\Utilitarios\App.config
+C:\Users\David\source\repos\proyectoTEA\Utilitarios\packages.config

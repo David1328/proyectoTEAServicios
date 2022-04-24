@@ -1,0 +1,14 @@
+J
+AC:\Users\David\source\repos\proyectoTEA\Utilitarios\LoginToken.csutf-8Q
+HC:\Users\David\source\repos\proyectoTEA\Utilitarios\PacienteScoreJSon.csutf-8W
+NC:\Users\David\source\repos\proyectoTEA\Utilitarios\Properties\AssemblyInfo.csutf-8G
+>C:\Users\David\source\repos\proyectoTEA\Utilitarios\UAcceso.csutf-8J
+AC:\Users\David\source\repos\proyectoTEA\Utilitarios\UActividad.csutf-8J
+AC:\Users\David\source\repos\proyectoTEA\Utilitarios\UAcudiente.csutf-8H
+?C:\Users\David\source\repos\proyectoTEA\Utilitarios\UDocente.csutf-8I
+@C:\Users\David\source\repos\proyectoTEA\Utilitarios\UPaciente.csutf-8D
+;C:\Users\David\source\repos\proyectoTEA\Utilitarios\URol.csutf-8N
+EC:\Users\David\source\repos\proyectoTEA\Utilitarios\UTipoActividad.csutf-8F
+=C:\Users\David\source\repos\proyectoTEA\Utilitarios\UUsers.csutf-8F
+=C:\Users\David\source\repos\proyectoTEA\Utilitarios\Wraper.csutf-8_
+TC:\Users\David\AppData\Local\Temp\.NETFramework,Version=v4.6.1.AssemblyAttributes.csutf-8

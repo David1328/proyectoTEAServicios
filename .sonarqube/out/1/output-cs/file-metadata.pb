@@ -1,0 +1,9 @@
+C
+:C:\Users\David\source\repos\proyectoTEA\Datos\Actividad.csutf-8A
+8C:\Users\David\source\repos\proyectoTEA\Datos\Mapping.csutf-8Q
+HC:\Users\David\source\repos\proyectoTEA\Datos\Properties\AssemblyInfo.csutf-8C
+:C:\Users\David\source\repos\proyectoTEA\Datos\Seguridad.csutf-8F
+=C:\Users\David\source\repos\proyectoTEA\Datos\UserPaciente.csutf-8D
+;C:\Users\David\source\repos\proyectoTEA\Datos\UsersLogin.csutf-8G
+>C:\Users\David\source\repos\proyectoTEA\Datos\UsersRegister.csutf-8_
+TC:\Users\David\AppData\Local\Temp\.NETFramework,Version=v4.6.1.AssemblyAttributes.csutf-8

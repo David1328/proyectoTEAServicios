@@ -1,0 +1,8 @@
+﻿C:\Users\David\source\repos\proyectoTEA\LogicaDeNegocio\LActividad.cs
+C:\Users\David\source\repos\proyectoTEA\LogicaDeNegocio\LIngresoLogin.cs
+C:\Users\David\source\repos\proyectoTEA\LogicaDeNegocio\LPaciente.cs
+C:\Users\David\source\repos\proyectoTEA\LogicaDeNegocio\LUserRegistercs.cs
+C:\Users\David\source\repos\proyectoTEA\LogicaDeNegocio\Properties\AssemblyInfo.cs
+C:\Users\David\source\repos\proyectoTEA\LogicaDeNegocio\app.config
+C:\Users\David\source\repos\proyectoTEA\LogicaDeNegocio\DiagramaLogicaDeNegocio.cd
+C:\Users\David\source\repos\proyectoTEA\LogicaDeNegocio\packages.config
