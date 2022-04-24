@@ -159,5 +159,19 @@ namespace Datos
 			}
 			return patientsDidActivity;
 		}
+
+		public List<UEvaluacionInicial> getListActivitysToInicialEvaluation(int[] id_random,int identificador)
+		{
+			UEvaluacionInicial[] activity = new UEvaluacionInicial[id_random.Length];
+			List<UEvaluacionInicial> activityList = new List<UEvaluacionInicial>();
+			int primero = id_random[0];
+			int segundo = id_random[1];
+			int tercero = id_random[2];
+			activity[0] = new Mapping().actividadEvaluacionInicial.Where(x => (x.IdActividad.Equals(primero)) && (x.TipoActividad.Equals(identificador))).FirstOrDefault();
+			activity[1] = new Mapping().actividadEvaluacionInicial.Where(x => (x.IdActividad.Equals(segundo)) && (x.TipoActividad.Equals(identificador))).FirstOrDefault();
+			activity[2] = new Mapping().actividadEvaluacionInicial.Where(x => (x.IdActividad.Equals(tercero)) && (x.TipoActividad.Equals(identificador))).FirstOrDefault();
+			activityList.AddRange(activity);
+			return activityList;
+		}
 	}
 }

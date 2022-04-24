@@ -97,6 +97,7 @@
     <Compile Include="UActividad.cs" />
     <Compile Include="UAcudiente.cs" />
     <Compile Include="UDocente.cs" />
+    <Compile Include="UEvaluacionInicial.cs" />
     <Compile Include="UPaciente.cs" />
     <Compile Include="URol.cs" />
     <Compile Include="UTipoActividad.cs" />
