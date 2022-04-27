@@ -44,6 +44,7 @@ namespace Datos
 											  Id_actividad = m.a.Id_actividad,
 											  NombreActividad = m.a.NombreActividad,
 											  Descripcion = m.a.Descripcion,
+											  Tipo_actividad = m.a.Tipo_actividad,
 											  Contenido_actividad = m.a.Contenido_actividad,
 											  Tipo_actividad_texto = m.tp.ActividadNombre
 										  }).ToList();
@@ -172,6 +173,15 @@ namespace Datos
 			activity[2] = new Mapping().actividadEvaluacionInicial.Where(x => (x.IdActividad.Equals(tercero)) && (x.TipoActividad.Equals(identificador))).FirstOrDefault();
 			activityList.AddRange(activity);
 			return activityList;
+		}
+
+		public List<PacienteScoreJSon> GetPacienteScoreJSons(int id_activity, string id_card_patient)
+		{
+			UActividad activityDid = new Mapping().actividad.Where(x => x.Id_actividad.Equals(id_activity)).FirstOrDefault();
+			List<PacienteScoreJSon> patientInTheActivity = new List<PacienteScoreJSon>();
+			patientInTheActivity =
+			JsonConvert.DeserializeObject<List<PacienteScoreJSon>>(activityDid.EstudiantesHicieronActividad);
+			return patientInTheActivity.Where(x => x.DocumentoPaciente.Equals(id_card_patient)).ToList();
 		}
 	}
 }

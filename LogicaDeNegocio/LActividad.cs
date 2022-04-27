@@ -104,6 +104,10 @@ namespace LogicaDeNegocio
             }
 			return new Actividad().getListActivitysToInicialEvaluation(activities, identificador);
         }
+		public List<PacienteScoreJSon> getResultActivity(int id_activity, string id_card_patient)
+		{
+			return new Datos.Actividad().GetPacienteScoreJSons(id_activity, id_card_patient);
+		}
 
 	}
 }

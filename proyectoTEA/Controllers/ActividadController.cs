@@ -190,5 +190,29 @@ namespace proyectoTEA.Controllers
 			return Ok(respuesta);
 		}
 
+		[Route("GetResulActivity/{id_activity}/{id_card_patient}")]
+		[HttpGet]
+		public IHttpActionResult GetResulActivity(int id_activity, string id_card_patient)
+		{
+			try
+			{
+
+				List<PacienteScoreJSon> respuesta = new LActividad().getResultActivity(id_activity,id_card_patient);
+				if (respuesta != null)
+				{
+					return Ok(respuesta);
+				}
+				else
+				{
+					return NotFound();
+				}
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
+
+
 	}
 }
