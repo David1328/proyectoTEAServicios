@@ -17,6 +17,7 @@ namespace Utilitarios
 		private String numero_documento_paciente;
 		private String correo;
 		private String clave;
+		private String clave_actual;
 
 		[Key]
 		[Column("id_docente")]
@@ -38,5 +39,7 @@ namespace Utilitarios
 		public string Clave { get => clave; set => clave = value; }
 		[NotMapped]
 		public string Numero_documento_paciente { get => numero_documento_paciente; set => numero_documento_paciente = value; }
+		[NotMapped]
+		public string Clave_actual { get => clave_actual; set => clave_actual = value; }
 	}
 }

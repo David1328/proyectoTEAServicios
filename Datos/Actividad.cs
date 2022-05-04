@@ -46,22 +46,28 @@ namespace Datos
 											  Descripcion = m.a.Descripcion,
 											  Tipo_actividad = m.a.Tipo_actividad,
 											  Contenido_actividad = m.a.Contenido_actividad,
-											  Tipo_actividad_texto = m.tp.ActividadNombre
+											  Tipo_actividad_texto = m.tp.ActividadNombre,
+											  Estado_id = m.a.Estado_id
 										  }).ToList();
 				return lista;
 			}
         }
-		public void eliminarActividad(int actividad_id)
+		public string desactivivarOActivarActividad(int actividad_id)
 		{
 			using (var db = new Mapping())
 			{
 
-				UActividad actividadAEliminar = db.actividad.Where(x => x.Id_actividad.Equals(actividad_id)).FirstOrDefault();
-				db.actividad.Attach(actividadAEliminar);
-				var elimina = db.Entry(actividadAEliminar);
-				elimina.State = EntityState.Deleted;
+				UActividad actividadAActualizar = db.actividad.Where(x => x.Id_actividad.Equals(actividad_id)).FirstOrDefault();
+				string respuesta = "Se activo actividad con exito";
+				actividadAActualizar.Estado_id = actividadAActualizar.Estado_id == 1 ? 2 : 1;
+
+				respuesta = actividadAActualizar.Estado_id == 1 ? respuesta: "Se desactivo actividad con exito";
+
+				var enty = db.Entry(actividadAActualizar);
+				enty.State = EntityState.Modified;
 				db.SaveChanges();
 
+				return respuesta;
 			}
 		}
 

@@ -19,6 +19,7 @@ namespace Utilitarios
 		private String documento;
 		private String correo;
 		private String clave;
+		private String clave_actual;
 
 
 		[Key]
@@ -35,5 +36,7 @@ namespace Utilitarios
 
 		[NotMapped]
 		public string Clave { get => clave; set => clave = value; }
+		[NotMapped]
+		public string Clave_actual { get => clave_actual; set => clave_actual = value; }
 	}
 }

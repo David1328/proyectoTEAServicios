@@ -152,6 +152,50 @@ namespace proyectoTEA.Controllers
 			}
 		}
 
-
+		[Route("PutActualizarDatosDocente")]
+		[HttpPut]
+		public IHttpActionResult PutActualizarDatosDocente(UDocente uDocente)
+		{
+			string message;
+			try
+			{
+				message = new LUserRegistercs().putActualizarDocente(uDocente);
+				return Ok(message);
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
+		[Route("PutActualizarDatosAcudiente")]
+		[HttpPut]
+		public IHttpActionResult PutActualizarDatosAcudiente(UAcudiente acudienteNuevo)
+		{
+			string message;
+			try
+			{
+				message = new LUserRegistercs().putActualizarAcudiente(acudienteNuevo);
+				return Ok(message);
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
+		[Route("PutActualizarDatosPaciente")]
+		[HttpPut]
+		public IHttpActionResult PutActualizarDatosPaciente(UPaciente uPaciente)
+		{
+			string message;
+			try
+			{
+				message = new LUserRegistercs().putActualizarPaciente(uPaciente);
+				return Ok(message);
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
 	}
 }

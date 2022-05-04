@@ -90,6 +90,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UEstado_actividad.cs" />
     <Compile Include="LoginToken.cs" />
     <Compile Include="PacienteScoreJSon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,9 +1,6 @@
 ﻿using LogicaDeNegocio;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Utilitarios;
@@ -78,14 +75,14 @@ namespace proyectoTEA.Controllers
 
 
 
-		[Route("DeleteActividad/{actividad_id}")]
+		[Route("PutActividadDesActivar/{actividad_id}")]
 		[HttpDelete]
-		public IHttpActionResult DeleteActividad(string actividad_id)
+		public IHttpActionResult PutActividadDesActivar(string actividad_id)
 		{
 			string message;
 			try
 			{
-				message = new LActividad().eliminarActividad(int.Parse(actividad_id));
+				message = new LActividad().activarODesactivarActividad(int.Parse(actividad_id));
 				return Ok(message);
 			}
 			catch (Exception ex)
@@ -213,6 +210,20 @@ namespace proyectoTEA.Controllers
 			}
 		}
 
+
+		[Route("GetScoreImitationActivity/{phrases_base}/{phrases_said}")]
+		[HttpGet]
+		public IHttpActionResult GetScoreImitationActivity(string phrases_base, string phrases_said)
+		{
+			try
+			{
+				return Ok(new LActividad().getScoreActivityImitation(phrases_base, phrases_said));
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
 
 	}
 }

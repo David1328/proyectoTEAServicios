@@ -160,5 +160,108 @@ namespace LogicaDeNegocio
 
 		}
 
+		//                   En esta zona se van actualizaran los usuarios
+		//Actualizar Docente
+		public String putActualizarDocente(UDocente nuevoDocente)
+		{
+			try
+			{
+				Wraper wraper = new Wraper();
+				//Actualizar el nombre y apellido
+				if (nuevoDocente.Nombre != null && nuevoDocente.Apellido != null)
+				{
+					wraper.Mensaje = new UsersRegister().putActualizarDocente(nuevoDocente, 1);
+				}
+				//Actualizar la clave
+				else if (nuevoDocente.Clave != null)
+				{
+					wraper.Mensaje = new UsersRegister().putActualizarDocente(nuevoDocente, 2);
+				}
+				//Actualizar el correo
+				else if (nuevoDocente.Correo != null)
+				{
+					wraper.Mensaje = new UsersRegister().putActualizarDocente(nuevoDocente, 3);
+				}
+				//No existe opción
+				else
+				{
+					wraper.Mensaje = "Actualización invalida";
+				}
+				return wraper.Mensaje;
+			}
+			catch (Exception e)
+			{
+				return "error: " + e;
+			}
+		}
+		//Actualizar Acudiente
+		public String putActualizarAcudiente(UAcudiente nuevoAcudiente)
+		{
+			try
+			{
+				Wraper wraper = new Wraper();
+				//Actualizar el nombre y apellido
+				if (nuevoAcudiente.Nombre != null && nuevoAcudiente.Apellido != null)
+				{
+					wraper.Mensaje = new UsersRegister().putActualizarAcudiente(nuevoAcudiente, 1);
+				}
+				//Actualizar la clave
+				else if (nuevoAcudiente.Clave != null)
+				{
+					wraper.Mensaje = new UsersRegister().putActualizarAcudiente(nuevoAcudiente, 2);
+				}
+				//Actualizar el correo
+				else if (nuevoAcudiente.Correo != null)
+				{
+					wraper.Mensaje = new UsersRegister().putActualizarAcudiente(nuevoAcudiente, 3);
+				}
+				//No existe opción
+				else
+				{
+					wraper.Mensaje = "Actualización invalida";
+				}
+				return wraper.Mensaje;
+			}
+			catch (Exception e)
+			{
+				return "error: " + e;
+			}
+		}
+
+
+		//Actualizar Paciente
+		public String putActualizarPaciente(UPaciente nuevoPaciente)
+		{
+			try
+			{
+				Wraper wraper = new Wraper();
+				//Actualizar el nombre y apellido
+				if (nuevoPaciente.Nombre != null && nuevoPaciente.Apellido != null)
+				{
+					wraper.Mensaje = new UsersRegister().putActualizarPaciente(nuevoPaciente, 1);
+				}
+				//Actualizar la clave
+				else if (nuevoPaciente.Clave != null)
+				{
+					wraper.Mensaje = new UsersRegister().putActualizarPaciente(nuevoPaciente, 2);
+				}
+				//Actualizar el grado de autismo y edad
+				else if (nuevoPaciente.Grado_autismo !=null && nuevoPaciente.Edad!=null)
+				{
+					wraper.Mensaje = new UsersRegister().putActualizarPaciente(nuevoPaciente, 3);
+				}
+				//No existe opción
+				else
+				{
+					wraper.Mensaje = "Actualización invalida";
+				}
+				return wraper.Mensaje;
+			}
+			catch (Exception e)
+			{
+				return "error: " + e;
+			}
+		}
+
 	}
 }
