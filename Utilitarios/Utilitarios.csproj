@@ -100,6 +100,7 @@
     <Compile Include="UDocente.cs" />
     <Compile Include="UEvaluacionInicial.cs" />
     <Compile Include="UPaciente.cs" />
+    <Compile Include="UResultadoEvaluacionInicial.cs" />
     <Compile Include="URol.cs" />
     <Compile Include="UTipoActividad.cs" />
     <Compile Include="UUsers.cs" />

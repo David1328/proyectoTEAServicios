@@ -7,11 +7,11 @@ using Utilitarios;
 
 namespace proyectoTEA.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
+	[EnableCors(origins: "*", headers: "*", methods: "*")]
 
-    [RoutePrefix("api/actividades")]
-    public class ActividadController : ApiController
-    {
+	[RoutePrefix("api/actividades")]
+	public class ActividadController : ApiController
+	{
 		[HttpGet]
 		[Route("GetTypeActivity")]
 		public IHttpActionResult getTypeActivity()
@@ -27,22 +27,23 @@ namespace proyectoTEA.Controllers
 		}
 
 		[HttpGet]
-        [Route("GetListaActividades/{id_rol}/{id_card}")]
-        //  {"idDocente": "int"}
-        public IHttpActionResult getListaActividades(int id_rol, string id_card)
-        {
-            try
-            {
-                return Ok(new LActividad().listaActividades(id_rol,id_card));
-            }
-			catch (NullReferenceException ex){
+		[Route("GetListaActividades/{id_rol}/{id_card}")]
+		//  {"idDocente": "int"}
+		public IHttpActionResult getListaActividades(int id_rol, string id_card)
+		{
+			try
+			{
+				return Ok(new LActividad().listaActividades(id_rol, id_card));
+			}
+			catch (NullReferenceException ex)
+			{
 				return BadRequest("No tienes un estudiante Enlazado");
 			}
-            catch (Exception ex)
-            {
-                return BadRequest("surgio el siguente error: " + ex.Message.ToString());
-            }
-        }
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
 
 		[HttpGet]
 		[Route("GetActivityPerId/{idActivity}")]
@@ -60,18 +61,18 @@ namespace proyectoTEA.Controllers
 		}
 
 		[HttpPost]
-        [Route("PostAgregarActividad")]
-        public IHttpActionResult PostAgregarActividad(UActividad actividadE)
-        {
-            try
-            {
-                return Ok(new LActividad().agregarActividad(actividadE));
-            }
-            catch (Exception ex)
-            {
-                return BadRequest("surgio el siguente error: " + ex.Message.ToString());
-            }
-        }
+		[Route("PostAgregarActividad")]
+		public IHttpActionResult PostAgregarActividad(UActividad actividadE)
+		{
+			try
+			{
+				return Ok(new LActividad().agregarActividad(actividadE));
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
 
 
 
@@ -109,7 +110,7 @@ namespace proyectoTEA.Controllers
 
 		[Route("GetAcivitysMakedByPatientForTeacher/{id_activity}/{id_card_teacher}")]
 		[HttpGet]
-		public IHttpActionResult GetAcivitysMakedByPatientForTeacher(int id_activity,string id_card_teacher)
+		public IHttpActionResult GetAcivitysMakedByPatientForTeacher(int id_activity, string id_card_teacher)
 		{
 			try
 			{
@@ -132,13 +133,13 @@ namespace proyectoTEA.Controllers
 
 		[Route("GetAcivitysMakedByPatientForAttendant/{id_activity}/{id_card_attendant}")]
 		[HttpGet]
-		public IHttpActionResult GetAcivitysMakedByPatientForAttendant(int id_activity,string id_card_attendant)
+		public IHttpActionResult GetAcivitysMakedByPatientForAttendant(int id_activity, string id_card_attendant)
 		{
 			try
 			{
 
 				List<UPaciente> respuesta = new LActividad().getAcivitysDidByPatientForAttendant(id_activity, id_card_attendant);
-				if (respuesta!=null)
+				if (respuesta != null)
 				{
 					return Ok(respuesta);
 				}
@@ -194,7 +195,7 @@ namespace proyectoTEA.Controllers
 			try
 			{
 
-				List<PacienteScoreJSon> respuesta = new LActividad().getResultActivity(id_activity,id_card_patient);
+				List<PacienteScoreJSon> respuesta = new LActividad().getResultActivity(id_activity, id_card_patient);
 				if (respuesta != null)
 				{
 					return Ok(respuesta);
@@ -222,6 +223,23 @@ namespace proyectoTEA.Controllers
 			catch (Exception ex)
 			{
 				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
+
+		
+		[Route("PostGuardarResultadosEvaluacionInicial")]
+		[HttpPost]
+		public IHttpActionResult PostGuardarResultadosEvaluacionInicial(UResultadoEvaluacionInicial[] actividadE)
+		{
+			try
+			{
+				return Ok(new LActividad().guardarResultados(actividadE)); 
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+
+
 			}
 		}
 

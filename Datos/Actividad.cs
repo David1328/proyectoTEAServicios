@@ -189,5 +189,15 @@ namespace Datos
 			JsonConvert.DeserializeObject<List<PacienteScoreJSon>>(activityDid.EstudiantesHicieronActividad);
 			return patientInTheActivity.Where(x => x.DocumentoPaciente.Equals(id_card_patient)).ToList();
 		}
+
+		public void putInsertarresultado(UResultadoEvaluacionInicial resultadoE)
+		{
+
+			using (var db = new Mapping())
+			{
+				db.resultadoActividadEvaluacionInicial.Add(resultadoE);
+				db.SaveChanges();
+			}
+		}
 	}
 }

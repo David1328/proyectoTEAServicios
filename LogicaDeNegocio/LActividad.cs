@@ -212,5 +212,16 @@ namespace LogicaDeNegocio
 			return porcentaje;
 		}
 
+		//Permite guardar los resultados de la evaluacion inicial
+		public string guardarResultados(UResultadoEvaluacionInicial[] actividadE)
+		{
+			for (var i = 1; i < actividadE.Length; i++)
+			{
+				actividadE[i].Fecha = DateTime.Now.Date;
+				new Datos.Actividad().putInsertarresultado(actividadE[i]);
+			}
+			return "datos guardados";
+		}
+
 	}
 }

@@ -21,6 +21,8 @@ namespace Utilitarios
         private string audio3;
         private int tipoActividad;
         private int idActividad;
+        [NotMapped]
+        private int id_usuario;
 
         [Key]
         [Column("id")]
@@ -41,7 +43,6 @@ namespace Utilitarios
         public int TipoActividad { get => tipoActividad; set => tipoActividad = value; }
         [Column("idActividad")]
         public int IdActividad { get => idActividad; set => idActividad = value; }
-
 
     }
 }
