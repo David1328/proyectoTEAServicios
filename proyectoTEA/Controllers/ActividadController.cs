@@ -243,5 +243,65 @@ namespace proyectoTEA.Controllers
 			}
 		}
 
+
+		[Route("GetCategoriaPECS/{id_docente}/{id_estudiante}")]
+		[HttpGet]
+		public IHttpActionResult GetCtegoriaPECS(string id_docente, string id_estudiante)
+		{
+			try
+			{
+				return Ok(new LActividad().categoriasPECS(id_docente, id_estudiante));
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
+
+		[Route("GetCategoriaActivaPECS/{id_docente}")]
+		[HttpGet]
+		public IHttpActionResult GetCategoriasPECS(string id_docente)
+		{
+			try
+			{
+				return Ok(new LActividad().categoriasPECS(id_docente));
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
+
+		[Route("GetImagenesPECS/{id_docente}/{id_estudiante}/{categoria_id}")]
+		[HttpGet]
+		public IHttpActionResult GetImagenesPECS(string id_docente, string id_estudiante, int categoria_id)
+		{
+			try
+			{
+				return Ok(new LActividad().imagenesPECS(id_docente, id_estudiante, categoria_id));
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
+
+		[Route("PutCategoriaDesActivar/{actividad_id}")]
+		[HttpDelete]
+		public IHttpActionResult PutCategoriaDesActivar(string actividad_id)
+		{
+			string message;
+			try
+			{
+				message = new LActividad().activar_DesactivarCategoria(int.Parse(actividad_id));
+				return Ok(message);
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
+
+
 	}
 }

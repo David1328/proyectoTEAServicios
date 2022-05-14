@@ -71,6 +71,25 @@ namespace Datos
 			}
 		}
 
+		public string desactivivar_ActivarCategoria(int actividad_id)
+		{
+			using (var db = new Mapping())
+			{
+
+				UActividadPecsCategorias categoriaAActualizar = db.uActividadPecsCategorias.Where(x => x.Id.Equals(actividad_id)).FirstOrDefault();
+				string respuesta = "Se activo actividad con exito";
+				categoriaAActualizar.Estado_id = categoriaAActualizar.Estado_id == 1 ? 2 : 1;
+
+				respuesta = categoriaAActualizar.Estado_id == 1 ? respuesta : "Se desactivo actividad con exito";
+
+				var enty = db.Entry(categoriaAActualizar);
+				enty.State = EntityState.Modified;
+				db.SaveChanges();
+
+				return respuesta;
+			}
+		}
+
 
 		public UActividad getActivityId(int activity_id)
 		{
@@ -198,6 +217,30 @@ namespace Datos
 				db.resultadoActividadEvaluacionInicial.Add(resultadoE);
 				db.SaveChanges();
 			}
+		}
+
+		public List<UActividadPecsCategorias> getListaCategoriasAsignadas(string id_docente, string id_estudiante)
+		{
+			List<UActividadPecsCategorias> listaCategriasAsignadas = new List<UActividadPecsCategorias>();
+
+			listaCategriasAsignadas = new Mapping().uActividadPecsCategorias.Where(x => (x.Id_docente.Equals(id_docente)) && (x.Id_estudiante.Equals(id_estudiante)) && (x.Estado_id==1)).ToList();
+			return listaCategriasAsignadas;
+		}
+
+		public List<UActividadPecsCategorias> getListaCategorias(string id_docente)
+		{
+			List<UActividadPecsCategorias> listaCategriasAsignadas = new List<UActividadPecsCategorias>();
+
+			listaCategriasAsignadas = new Mapping().uActividadPecsCategorias.Where(x => (x.Id_docente.Equals(id_docente))).ToList();
+			return listaCategriasAsignadas;
+		}
+
+		public List<UActividadPecs> getListaImagenesAsignadas(string id_docente, string id_estudiante, int categoria_id)
+		{
+			List<UActividadPecs> listaImagenesAsignadas = new List<UActividadPecs>();
+
+			listaImagenesAsignadas = new Mapping().uActividadPecs.Where(x => (x.Id_docente.Equals(id_docente)) && (x.Id_estudiante.Equals(id_estudiante)) && (x.Categoria_id == categoria_id)).ToList();
+			return listaImagenesAsignadas;
 		}
 	}
 }

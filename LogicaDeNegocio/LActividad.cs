@@ -223,5 +223,27 @@ namespace LogicaDeNegocio
 			return "datos guardados";
 		}
 
+		//Obtiene categorias asignadas por el docente para el estudiante
+		public List<UActividadPecsCategorias> categoriasPECS(string id_docente, string id_estudiante)
+		{
+			return new Datos.Actividad().getListaCategoriasAsignadas(id_docente, id_estudiante);
+		}
+
+		public List<UActividadPecsCategorias> categoriasPECS(string id_docente)
+		{
+			return new Datos.Actividad().getListaCategorias(id_docente);
+		}
+
+		//Obtiene imagenes asignadas por el docente para el estudiante segun categoria
+		public List<UActividadPecs> imagenesPECS(string id_docente, string id_estudiante, int categoria_id)
+		{
+			return new Datos.Actividad().getListaImagenesAsignadas(id_docente, id_estudiante, categoria_id);
+		}
+
+		public string activar_DesactivarCategoria(int id_actividad)
+		{
+			return new Datos.Actividad().desactivivar_ActivarCategoria(id_actividad);
+		}
+
 	}
 }

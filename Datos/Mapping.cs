@@ -24,4 +24,7 @@ public class Mapping : DbContext
 	public DbSet<UEstado_actividad> uEstado_Actividad { get; set; }
 	public DbSet<UResultadoEvaluacionInicial> resultadoActividadEvaluacionInicial{ get; set; }
 
+	/*actividad PECS*/
+	public DbSet<UActividadPecsCategorias> uActividadPecsCategorias { get; set; }
+	public DbSet<UActividadPecs> uActividadPecs { get; set; }
 }
