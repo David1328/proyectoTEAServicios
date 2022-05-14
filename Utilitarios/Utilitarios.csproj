@@ -90,6 +90,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UActividadPecs.cs" />
+    <Compile Include="UActividadPecsCategorias.cs" />
     <Compile Include="UEstado_actividad.cs" />
     <Compile Include="LoginToken.cs" />
     <Compile Include="PacienteScoreJSon.cs" />

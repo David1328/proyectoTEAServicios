@@ -137,7 +137,7 @@ namespace proyectoTEA.Controllers
 		[Route("datosPaciente/{documentoPaciente}")]
 		[HttpGet]
 		public async Task<IHttpActionResult> datosPaciente(string documentoPaciente)
-		{
+	{
 			UPaciente paciente = new UPaciente();
 
 			try
