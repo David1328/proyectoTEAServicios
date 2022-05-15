@@ -302,6 +302,22 @@ namespace proyectoTEA.Controllers
 			}
 		}
 
+		[Route("PostAgregarCategoria")]
+		[HttpPost]
+		public IHttpActionResult PostAgregarCategoria(UActividadPecsCategorias PostAgregarCategoria)
+		{
+			try
+			{
+				return Ok(new LActividad().guardarCategoria(PostAgregarCategoria));
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+
+
+			}
+		}
+
 
 	}
 }

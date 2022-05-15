@@ -245,5 +245,14 @@ namespace LogicaDeNegocio
 			return new Datos.Actividad().desactivivar_ActivarCategoria(id_actividad);
 		}
 
+		//Permite agregar una categoria nueva segun el docente y el paciente
+		public string guardarCategoria(UActividadPecsCategorias categoriaE)
+		{
+
+			new Datos.Actividad().putInsertarcategoria(categoriaE);
+			
+			return "datos guardados";
+		}
+
 	}
 }

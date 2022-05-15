@@ -242,5 +242,15 @@ namespace Datos
 			listaImagenesAsignadas = new Mapping().uActividadPecs.Where(x => (x.Id_docente.Equals(id_docente)) && (x.Id_estudiante.Equals(id_estudiante)) && (x.Categoria_id == categoria_id)).ToList();
 			return listaImagenesAsignadas;
 		}
+
+		public void putInsertarcategoria(UActividadPecsCategorias categoriaE)
+		{
+
+			using (var db = new Mapping())
+			{
+				db.uActividadPecsCategorias.Add(categoriaE);
+				db.SaveChanges();
+			}
+		}
 	}
 }
