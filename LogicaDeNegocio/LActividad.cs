@@ -254,5 +254,14 @@ namespace LogicaDeNegocio
 			return "datos guardados";
 		}
 
+		//Permite agregar una actividad PECS con imagen
+		public string guardarActividadPECSImagen(UActividadPecs actividadE)
+		{
+
+			new Datos.Actividad().putInsertaractividadImagenPECS(actividadE);
+
+			return "datos guardados";
+		}
+
 	}
 }

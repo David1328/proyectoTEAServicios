@@ -252,5 +252,15 @@ namespace Datos
 				db.SaveChanges();
 			}
 		}
+
+		public void putInsertaractividadImagenPECS(UActividadPecs actividadE)
+		{
+
+			using (var db = new Mapping())
+			{
+				db.uActividadPecs.Add(actividadE);
+				db.SaveChanges();
+			}
+		}
 	}
 }

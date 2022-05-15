@@ -318,6 +318,22 @@ namespace proyectoTEA.Controllers
 			}
 		}
 
+		[Route("PostAgregarActividadImagenPECS")]
+		[HttpPost]
+		public IHttpActionResult PostAgregarActividadImagenPECS(UActividadPecs PostAgregarActividad)
+		{
+			try
+			{
+				return Ok(new LActividad().guardarActividadPECSImagen(PostAgregarActividad));
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+
+
+			}
+		}
+
 
 	}
 }
