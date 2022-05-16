@@ -185,6 +185,34 @@ namespace Datos
 			}
 			return patientsDidActivity;
 		}
+		public List<UPaciente> patienteMakeEvaluation()
+		{
+			List<UPaciente> patientMakeEvaluation = new List<UPaciente>();
+			List<UResultadoEvaluacionInicial> patients = new List<UResultadoEvaluacionInicial>();
+			//List<UPaciente> patients = new List<UResultadoEvaluacionInicial>();
+			using (var db = new Mapping())
+			{
+				patients = new HashSet<UResultadoEvaluacionInicial>(db.resultadoActividadEvaluacionInicial.ToList()).ToList();
+
+				foreach(var patient in patients)
+				{
+					if (patientMakeEvaluation.Where(x=>x.Documento == patient.Id_usuario).FirstOrDefault() == null)
+					{
+						patientMakeEvaluation.Add(db.paciente.Where(x => x.Documento.Equals(patient.Id_usuario)).FirstOrDefault());
+					}
+				}
+				return patientMakeEvaluation;
+			}
+		}
+
+		public List<UResultadoEvaluacionInicial> patienteScoreEvaluation(string id_card_patient)
+		{
+			using (var db = new Mapping())
+			{
+
+				return db.resultadoActividadEvaluacionInicial.Where(x=>x.Id_usuario.Equals(id_card_patient)).ToList();
+			}
+		}
 
 		public List<UEvaluacionInicial> getListActivitysToInicialEvaluation(int[] id_random,int identificador)
 		{

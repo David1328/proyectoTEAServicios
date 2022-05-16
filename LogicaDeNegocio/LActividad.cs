@@ -84,6 +84,15 @@ namespace LogicaDeNegocio
 			return new Actividad().getAcivitysDidByPatientForTeacher(id_activity, id_card_teacher);
 		}
 
+		public List<UPaciente> getStudienEvaluation()
+		{
+			return new Actividad().patienteMakeEvaluation();
+		}
+		public List<UResultadoEvaluacionInicial> getScoreEvaluation(string id_card_patient)
+		{
+			return new Actividad().patienteScoreEvaluation(id_card_patient);
+		}
+
 		public List<UEvaluacionInicial> getListActivitysToInicialEvaluation(int identificador)
         {
 			Random random = new Random();

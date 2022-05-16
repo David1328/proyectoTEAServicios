@@ -333,7 +333,41 @@ namespace proyectoTEA.Controllers
 
 			}
 		}
-
+		[HttpGet]
+		[Route("GetListStudentEvaluation")]
+		public IHttpActionResult GetListStudentEvaluation()
+		{
+			try
+			{
+				return Ok(new LActividad().getStudienEvaluation());
+			}
+			catch (NullReferenceException ex)
+			{
+				return BadRequest("No hay estudiantes para esta actividad");
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
+		[HttpGet]
+		[Route("GetScoreStudenEvaluation/{id_card}")]
+		//  {"idDocente": "int"}
+		public IHttpActionResult getScoreStudenEvaluation(string id_card)
+		{
+			try
+			{
+				return Ok(new LActividad().getScoreEvaluation(id_card));
+			}
+			catch (NullReferenceException ex)
+			{
+				return BadRequest("No tienes un estudiante Enlazado");
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
 
 	}
 }
