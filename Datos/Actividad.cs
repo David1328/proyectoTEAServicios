@@ -255,6 +255,15 @@ namespace Datos
 			return listaCategriasAsignadas;
 		}
 
+		public int getCantidadCategoriasAsignadas(string id_docente, string id_estudiante)
+		{
+			int cantidadCategriasAsignadas;
+
+			cantidadCategriasAsignadas = new Mapping().uActividadPecsCategorias.Where(x => (x.Id_docente.Equals(id_docente)) && (x.Id_estudiante.Equals(id_estudiante))).Count();
+			return cantidadCategriasAsignadas+1;
+		}
+
+
 		public List<UActividadPecsCategorias> getListaCategorias(string id_docente)
 		{
 			List<UActividadPecsCategorias> listaCategriasAsignadas = new List<UActividadPecsCategorias>();

@@ -238,6 +238,12 @@ namespace LogicaDeNegocio
 			return new Datos.Actividad().getListaCategoriasAsignadas(id_docente, id_estudiante);
 		}
 
+		//Obtiene cantidad categorias asignadas por el docente para el estudiante
+		public int cantidadCategoriasPECS(string id_docente, string id_estudiante)
+		{
+			return new Datos.Actividad().getCantidadCategoriasAsignadas(id_docente, id_estudiante);
+		}
+
 		public List<UActividadPecsCategorias> categoriasPECS(string id_docente)
 		{
 			return new Datos.Actividad().getListaCategorias(id_docente);

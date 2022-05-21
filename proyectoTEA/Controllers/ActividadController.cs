@@ -258,6 +258,20 @@ namespace proyectoTEA.Controllers
 			}
 		}
 
+		[Route("GetCantidadCategoriaPECS/{id_docente}/{id_estudiante}")]
+		[HttpGet]
+		public IHttpActionResult GetCantidadCategoriaPECS(string id_docente, string id_estudiante)
+		{
+			try
+			{
+				return Ok(new LActividad().cantidadCategoriasPECS(id_docente, id_estudiante));
+			}
+			catch (Exception ex)
+			{
+				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
+			}
+		}
+
 		[Route("GetCategoriaActivaPECS/{id_docente}")]
 		[HttpGet]
 		public IHttpActionResult GetCategoriasPECS(string id_docente)
