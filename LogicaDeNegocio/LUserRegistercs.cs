@@ -263,5 +263,30 @@ namespace LogicaDeNegocio
 			}
 		}
 
+		public Boolean registroTokenCompra(UDocente datosDocenteCompra)
+		{
+
+			//genera el token
+			string token = new UsersRegister().generaTokenAleatorio();
+			//agrega el token a la db
+			bool mensaje = new UsersRegister().agregarTokenCompra(datosDocenteCompra, token);
+            //envia info personal y el token por correo
+            if (mensaje == true)
+            {
+				new Mail().enviarMailCompra(datosDocenteCompra, token);
+				return mensaje;
+			}
+            else if(mensaje == false)
+            {
+				return mensaje;
+            }
+            else
+            {
+				mensaje = false;
+				return mensaje;
+            }
+
+		}
+
 	}
 }

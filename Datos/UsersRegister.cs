@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using Utilitarios;
 
@@ -213,9 +214,58 @@ namespace Datos
 				var enty = db.Entry(pacienteActualizar);
 				enty.State = EntityState.Modified;
 				db.SaveChanges();
-				return respuesta;
+				return respuesta; 
 			}
 
+		}
+
+		//Agregar token compra
+		public Boolean agregarTokenCompra(UDocente datosDocenteCompra, string token)
+		{
+			using (var db = new Mapping())
+			{
+
+				//verifica si ya existe un token
+				bool mensaje = false;
+
+				int tokeExist = db.token_compra.Where(x => (x.User_id.Equals(datosDocenteCompra.Documento)) && (x.Fecha_vigencia > DateTime.Now ) && (x.Token != null)).Count();
+
+                if (tokeExist >= 1)
+                {
+					//ya existe una licencia activa
+					mensaje = false;
+				}
+                else if(tokeExist == 0)
+                {
+					UTokenCompra compraDatos = new UTokenCompra();
+					compraDatos.User_id = datosDocenteCompra.Documento;
+					compraDatos.Fecha_generado = DateTime.Now;
+					compraDatos.Fecha_vigencia = DateTime.Now.AddDays(365);
+					compraDatos.Token = token;
+					db.token_compra.Add(compraDatos);
+					db.SaveChanges();
+					//crea una  nueva licencia
+					mensaje = true;
+				}
+
+				return mensaje;
+
+			}
+		}
+
+		public string generaTokenAleatorio()
+        {
+			var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+*/=!_-~";
+			var Charsarr = new char[12];
+			var random = new Random();
+			for (int i = 0; i < Charsarr.Length; i++)
+			{
+				Charsarr[i] = characters[random.Next(characters.Length)];
+			}
+
+			var resultString = new String(Charsarr);
+
+			return resultString;
 		}
 	}
 }

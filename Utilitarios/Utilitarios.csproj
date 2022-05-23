@@ -90,6 +90,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mail.cs" />
     <Compile Include="UActividadPecs.cs" />
     <Compile Include="UActividadPecsCategorias.cs" />
     <Compile Include="UEstado_actividad.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="UResultadoEvaluacionInicial.cs" />
     <Compile Include="URol.cs" />
     <Compile Include="UTipoActividad.cs" />
+    <Compile Include="UTokenCompra.cs" />
     <Compile Include="UUsers.cs" />
     <Compile Include="Wraper.cs" />
   </ItemGroup>

@@ -137,7 +137,7 @@ namespace proyectoTEA.Controllers
 		[Route("datosPaciente/{documentoPaciente}")]
 		[HttpGet]
 		public async Task<IHttpActionResult> datosPaciente(string documentoPaciente)
-	{
+		{
 			UPaciente paciente = new UPaciente();
 
 			try
@@ -197,5 +197,24 @@ namespace proyectoTEA.Controllers
 				return BadRequest("surgio el siguente error: " + ex.Message.ToString());
 			}
 		}
+
+		[Route("PostAgregarTokenCompra_envioDeCorreo")]
+		[HttpPost]
+		public IHttpActionResult PostAgregarPaciente(UDocente datosDocenteCompra)
+		{
+			bool confirmacionCompra = false;
+			try
+			{
+				confirmacionCompra = new LUserRegistercs().registroTokenCompra(datosDocenteCompra);
+				return Ok(confirmacionCompra);
+			}
+			catch (Exception ex)
+			{
+				string message = "Hubo un error" + ex;
+				return BadRequest();
+			}
+		}
+
+
 	}
 }

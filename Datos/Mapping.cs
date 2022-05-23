@@ -17,6 +17,9 @@ public class Mapping : DbContext
 	/*token */
 	public DbSet<LoginToken> login_token { get; set; }
 
+	/*token compra*/
+	public DbSet<UTokenCompra> token_compra { get; set; }
+
 	/*actividad*/
 	public DbSet<UActividad> actividad { get; set; }
 	public DbSet<UEvaluacionInicial> actividadEvaluacionInicial { get; set; }
