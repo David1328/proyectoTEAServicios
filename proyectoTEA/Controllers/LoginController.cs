@@ -20,21 +20,35 @@ namespace proyectoTEA.Controllers
 
 		public async Task<IHttpActionResult> PostIngresoLogin(UUsers usuarioE)
 		{
-			try
+            UTokenCompra validacionCompra = new UTokenCompra();
+            try
 			{
-				Wraper wp = new Wraper();
-				wp = await new LIngresoLogin().ingresoLogin(usuarioE);
+                validacionCompra = await new LUserRegistercs().obtenerDatosCompra(usuarioE.Documento);
 
-                if (wp.WraperUsuario == null)
+                if (validacionCompra == null)
                 {
-					return BadRequest(wp.Mensaje);
+                    return BadRequest("Debes tener una licencia activa para ingresar.");
+                }
+                else if(validacionCompra != null)
+                {
+                    Wraper wp = new Wraper();
+                    wp = await new LIngresoLogin().ingresoLogin(usuarioE);
+
+                    if (wp.WraperUsuario == null)
+                    {
+                        return BadRequest(wp.Mensaje);
+                    }
+                    else
+                    {
+                        usuarioE.Rol_id = wp.WraperUsuario.Rol_id;
+                        wp.Token = TokenGenerator.GenerateTokenJwt(usuarioE);
+                        return Ok(wp);
+                    }
                 }
                 else
                 {
-					usuarioE.Rol_id = wp.WraperUsuario.Rol_id;
-					wp.Token = TokenGenerator.GenerateTokenJwt(usuarioE);
-					return Ok(wp);
-				}
+                    return BadRequest();
+                }
 			}
 			catch (Exception ex)
 			{

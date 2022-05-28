@@ -44,20 +44,32 @@ namespace proyectoTEA.Controllers
 
 		[Route("PostAgregarDocente")]
 		[HttpPost]
-		public IHttpActionResult PostAgregarDocente(UDocente nuevoDocente)
+		public async Task<IHttpActionResult> PostAgregarDocente(UDocente nuevoDocente)
 		{
 			string message;
+			UTokenCompra validacionCompra = new UTokenCompra();
 			try
 			{
-				message = new LUserRegistercs().agregarUsuarioDocente(nuevoDocente);
-				switch (message)
-				{
-					case "Este usuario ya existe":
-						return Conflict();
-					case "Registrado con exito":
-						return Ok(message);
-					default:
-						return BadRequest();
+				validacionCompra = await new LUserRegistercs().obtenerDatosCompra(nuevoDocente.Documento);
+                if (validacionCompra==null)
+                {
+					return BadRequest("Debes tener una licencia activa para registrarte.");
+				}else if (validacionCompra != null)
+                {
+					message = new LUserRegistercs().agregarUsuarioDocente(nuevoDocente);
+					switch (message)
+					{
+						case "Este usuario ya existe":
+							return Conflict();
+						case "Registrado con exito":
+							return Ok(message);
+						default:
+							return BadRequest();
+					}
+                }
+                else
+                {
+					return BadRequest();
 				}
 			}
 			catch (Exception ex)
@@ -200,7 +212,7 @@ namespace proyectoTEA.Controllers
 
 		[Route("PostAgregarTokenCompra_envioDeCorreo")]
 		[HttpPost]
-		public IHttpActionResult PostAgregarPaciente(UDocente datosDocenteCompra)
+		public IHttpActionResult PostAgregarTokenCompra(UDocente datosDocenteCompra)
 		{
 			bool confirmacionCompra = false;
 			try

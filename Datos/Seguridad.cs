@@ -27,6 +27,11 @@ namespace Datos
             }
         }
 
+        public async Task<UTokenCompra> buscarExistenciaTokenCompra(string cedulaE)
+        {
+            return new Mapping().token_compra.Where(x => (x.User_id.Equals(cedulaE))).FirstOrDefault();
+        }
+
         public void cerrarAcceso(int userid)
         {
             using (var db = new Mapping())

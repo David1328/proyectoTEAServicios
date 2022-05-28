@@ -99,6 +99,13 @@ namespace LogicaDeNegocio
 			}
 		}
 
+		public async Task<UTokenCompra> obtenerDatosCompra(string cedulaE)
+		{
+			UTokenCompra acudiente;
+
+			return acudiente = await new Datos.Seguridad().buscarExistenciaTokenCompra(cedulaE);
+		
+		}
 
 		public async Task<UAcudiente> obtenerDatosAcudiente(string cedulaE)
         {

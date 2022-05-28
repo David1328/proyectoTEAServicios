@@ -15,7 +15,7 @@ namespace Utilitarios
             MailMessage mail = new MailMessage();
             SmtpClient SmtpSever = new SmtpClient("smtp.gmail.com", 587);//servidor gmail
 
-            mail.From = new MailAddress("santiagober.ov@gmail.com", "Compra Autiweb exitosa");//correo que envia, diplay name 
+            mail.From = new MailAddress("autiweb.aplicacion@gmail.com", "Compra Autiweb exitosa");//correo que envia, diplay name 
             mail.Subject = "Registro exitoso";//asunto
             mail.Body = "Su compra ha sido exitosa, sus datos son:\n"+"Cc:"+datosDocenteCompra.Documento+"\nNombre: " + datosDocenteCompra.Nombre+
                 "\nCodigo de compra: "+ token;
@@ -26,7 +26,7 @@ namespace Utilitarios
             //Configuracion del SMTP
             SmtpSever.Port = 587;
             SmtpSever.UseDefaultCredentials = false;
-            SmtpSever.Credentials = new System.Net.NetworkCredential("santiagober.ov@gmail.com", "andresdes12#");//correo origen, contra*
+            SmtpSever.Credentials = new System.Net.NetworkCredential("autiweb.aplicacion@gmail.com", "Auti123456#");//correo origen, contra*
             SmtpSever.EnableSsl = true;
             SmtpSever.Send(mail);//eviar
         }
