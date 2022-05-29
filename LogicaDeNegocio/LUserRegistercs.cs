@@ -280,7 +280,7 @@ namespace LogicaDeNegocio
             //envia info personal y el token por correo
             if (mensaje == true)
             {
-				new Mail().enviarMailCompra(datosDocenteCompra, token);
+				new Mail().enviarMail(datosDocenteCompra, token);
 				return mensaje;
 			}
             else if(mensaje == false)

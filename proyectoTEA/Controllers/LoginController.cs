@@ -75,5 +75,61 @@ namespace proyectoTEA.Controllers
 
         }
 
-    }
+		[HttpPut]
+		[Route("PutCorreoRecuperarClave")]
+
+		public async Task<IHttpActionResult> PutCorreoRecuperarClave(UDocente usuario)
+		{
+			try
+			{
+				string enviarCorreoRecuperar = new LIngresoLogin().enviarCorreoDeRecuperacion(usuario.Correo);
+				if (enviarCorreoRecuperar != null)
+				{
+					return Ok(enviarCorreoRecuperar);
+				}
+				return BadRequest("No se encontro el correo");
+			}
+			catch (Exception ex)
+			{
+				return InternalServerError(ex);
+			}
+		}
+		[HttpGet]
+		[Route("GetAccesoClave/{token}")]
+		public async Task<IHttpActionResult> GetAccesoClave(string token)
+		{
+			try
+			{
+				string accessoClaveNueva = new LIngresoLogin().accesoTokenRecuperar(token);
+				if (accessoClaveNueva.Equals("Acceso exitoso"))
+				{
+					return Ok(accessoClaveNueva);
+				}
+				return BadRequest(accessoClaveNueva);
+			}
+			catch (Exception ex)
+			{
+				return InternalServerError(ex);
+			}
+		}
+		[HttpPut]
+		[Route("PutCambiarClave")]
+
+		public async Task<IHttpActionResult> PutCambiarClave(UUsers usuario)
+		{
+			try
+			{
+				string enviarCorreoRecuperar = new LIngresoLogin().nuevaClave(usuario);
+				if (enviarCorreoRecuperar == "Clave modificada con exito")
+				{
+					return Ok(enviarCorreoRecuperar);
+				}
+				return BadRequest("No se pudo modificar la clave");
+			}
+			catch (Exception ex)
+			{
+				return InternalServerError(ex);
+			}
+		}
+	}
 }

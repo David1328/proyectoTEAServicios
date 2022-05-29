@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,5 +57,45 @@ namespace Datos
             }
         }
 
+		public UUsers confirmarCorreo(string correo)
+		{
+			using(var db = new Mapping())
+			{
+				UDocente docenteCorreo = db.docente.Where(x => x.Correo.Equals(correo)).FirstOrDefault();
+				UAcudiente acudienteCorreo = db.acudiente.Where(x => x.Correo.Equals(correo)).FirstOrDefault();
+				if (docenteCorreo != null)
+				{
+					var respu = db.user.Where(x => x.Documento.Equals(docenteCorreo.Documento)).FirstOrDefault();
+					return respu;
+				}
+				else if (acudienteCorreo != null)
+				{
+					return db.user.Where(x => x.Documento.Equals(acudienteCorreo.Documento)).FirstOrDefault();
+				}
+				return null;
+			}
+		}
+		public void cambiarDatosParaRecuperar(UUsers borrarClave)
+		{
+			using (var db = new Mapping())
+			{
+				UUsers users = db.user.Where(x => x.Documento.Equals(borrarClave.Documento)).First();
+
+				users.Clave = borrarClave.Clave;
+				users.Token = borrarClave.Token;
+				users.Token_expirar = borrarClave.Token_expirar;
+
+				var enty = db.Entry(users);
+				enty.State = EntityState.Modified;
+				db.SaveChanges();
+			}
+		}
+		public UUsers accesoRecuperarClave(string token)
+		{
+			using (var db = new Mapping())
+			{
+				return db.user.Where(x => x.Token.Equals(token)).FirstOrDefault();
+			}
+		}
     }
 }

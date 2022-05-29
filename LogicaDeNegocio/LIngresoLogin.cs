@@ -1,7 +1,9 @@
 ﻿using Datos;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Utilitarios;
@@ -77,5 +79,99 @@ namespace LogicaDeNegocio
             }
 
         }
-    }
+		public string accesoTokenRecuperar(string token)
+		{
+			try
+			{
+				UUsers usuarioToken = new UsersLogin().accesoRecuperarClave(token);
+				if (usuarioToken == null)
+				{
+					return "El Token es inválido, genere uno nuevo";
+				}if (usuarioToken.Token_expirar < DateTime.Now)
+				{
+					return "El Token está vencido, genere uno nuevo";
+				}
+				return "Acceso exitoso";
+			}
+			catch (Exception ex)
+			{
+				string errorMjs = "Ha surgido un error" + ex;
+				return errorMjs;
+			}
+		}
+		public string nuevaClave(UUsers nuevaClaveUser)
+		{
+			try
+			{
+				UUsers cambiarClave = new UsersLogin().accesoRecuperarClave(nuevaClaveUser.Token);
+				if (cambiarClave == null || cambiarClave.Token_expirar < DateTime.Now)
+				{
+					return "El Token es inválido, genere uno nuevo";
+				}
+				else
+				{
+					cambiarClave.Clave = nuevaClaveUser.Clave;
+					cambiarClave.Token = null;
+					cambiarClave.Token_expirar = null;
+					new UsersLogin().cambiarDatosParaRecuperar(cambiarClave);
+					return "Clave modificada con exito";
+				}
+			}
+			catch(Exception ex)
+			{
+				string errorMjs = "Ha surgido un error" + ex;
+				return errorMjs;
+			}
+
+		}
+		public string enviarCorreoDeRecuperacion(string correo)
+		{
+			try
+			{
+				UUsers correoUsuario = new UsersLogin().confirmarCorreo(correo);
+				if(correoUsuario!=null)
+				{
+					correoUsuario.Clave = " ";
+					correoUsuario.Token_expirar = DateTime.Now.AddDays(1);
+					correoUsuario.Token = encriptar(JsonConvert.SerializeObject(correoUsuario));
+					if (correoUsuario.Rol_id == 1)
+					{
+						UDocente docente = new UDocente();
+						docente.Correo = correo;
+						new Mail().enviarMail(docente, correoUsuario.Token);
+					}
+					else if (correoUsuario.Rol_id == 2)
+					{
+						UAcudiente acudiente = new UAcudiente();
+						acudiente.Correo = correo;
+						new Mail().enviarMail(acudiente, correoUsuario.Token);
+					}
+					new UsersLogin().cambiarDatosParaRecuperar(correoUsuario);
+					return "Revisa tu correo para nueva contraseña";
+				}
+				return "Usuario Inexistente";
+			}
+			catch (Exception ex)
+			{
+				string errorMjs = "Ha surgido un error" + ex;
+				return errorMjs;
+			}
+
+		}
+		private string encriptar(string entrada)
+		{
+			SHA256CryptoServiceProvider prueba = new SHA256CryptoServiceProvider();
+
+			byte[] entradaByte = Encoding.UTF8.GetBytes(entrada);
+			byte[] hashedBytes = prueba.ComputeHash(entradaByte);
+
+			StringBuilder salida = new StringBuilder();
+
+			for (int i = 0; i < hashedBytes.Length; i++)
+			{
+				salida.Append(hashedBytes[i].ToString("x2").ToLower());
+			}
+			return salida.ToString();
+		}
+	}
 }
