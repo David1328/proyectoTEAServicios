@@ -23,7 +23,15 @@ namespace proyectoTEA.Controllers
             UTokenCompra validacionCompra = new UTokenCompra();
             try
 			{
-                validacionCompra = await new LUserRegistercs().obtenerDatosCompra(usuarioE.Documento);
+                if (usuarioE.Rol_id == 1)
+                {
+					validacionCompra = await new LUserRegistercs().obtenerDatosCompra(usuarioE.Documento);
+                }
+                else if (usuarioE.Rol_id != 1)
+				{
+					validacionCompra.Token = "ok";
+				}
+                
 
                 if (validacionCompra == null)
                 {
