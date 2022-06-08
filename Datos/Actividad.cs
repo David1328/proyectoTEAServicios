@@ -183,6 +183,10 @@ namespace Datos
 			{
 				patientsDidActivity = null;
 			}
+			if (patientsDidActivity.Count < 1)
+			{
+				patientsDidActivity = null;
+			}
 			return patientsDidActivity;
 		}
 		public List<UPaciente> patienteMakeEvaluation()
